@@ -91,12 +91,12 @@ INSERT INTO brands (name, description) VALUES
 
 -- Insert sample fragrances
 INSERT INTO fragrances (brand_id, name, description, scent_family, top_notes, middle_notes, base_notes, image_url) VALUES
-(1, 'Oud Wood', 'A rare, exotic and smoky blend featuring oud wood from the finest sources', 'Oriental Woody', 'Brazilian Rosewood, Chinese Pepper', 'Oud Wood, Sandalwood', 'Vanilla, Amber'),
-(1, 'Tobacco Vanille', 'A sophisticated blend of sweet and spicy tobacco leaves', 'Oriental Spicy', 'Tobacco Leaf, Spicy Notes', 'Vanilla, Cocoa', 'Dried Fruits, Woody Notes'),
-(2, 'Aventus', 'A sophisticated scent perfect for the successful, ambitious and dynamic man', 'Chypre Fruity', 'Blackcurrant, Apple, Pineapple', 'Patchouli, Moroccan Rose', 'Musk, Oak Moss, Ambergris'),
-(3, 'Baccarat Rouge 540', 'A poetic alchemy between jasmine flowers and saffron spice', 'Amber Floral', 'Saffron, Jasmine', 'Amberwood, Ambergris', 'Fir Resin, Cedar'),
-(4, 'Santal 33', 'A smoky-rose scent that has become a cult classic', 'Woody Aromatic', 'Violet, Cardamom', 'Iris, Ambrox', 'Sandalwood, Cedarwood'),
-(5, 'Gypsy Water', 'A fresh take on the classic eau de cologne with a bohemian spirit', 'Woody Aromatic', 'Bergamot, Pepper, Juniper', 'Incense, Pine Needles', 'Vanilla, Sandalwood');
+(1, 'Oud Wood', 'A rare, exotic and smoky blend featuring oud wood from the finest sources', 'Oriental Woody', 'Brazilian Rosewood, Chinese Pepper', 'Oud Wood, Sandalwood', 'Vanilla, Amber', NULL),
+(1, 'Tobacco Vanille', 'A sophisticated blend of sweet and spicy tobacco leaves', 'Oriental Spicy', 'Tobacco Leaf, Spicy Notes', 'Vanilla, Cocoa', 'Dried Fruits, Woody Notes', NULL),
+(2, 'Aventus', 'A sophisticated scent perfect for the successful, ambitious and dynamic man', 'Chypre Fruity', 'Blackcurrant, Apple, Pineapple', 'Patchouli, Moroccan Rose', 'Musk, Oak Moss, Ambergris', NULL),
+(3, 'Baccarat Rouge 540', 'A poetic alchemy between jasmine flowers and saffron spice', 'Amber Floral', 'Saffron, Jasmine', 'Amberwood, Ambergris', 'Fir Resin, Cedar', NULL),
+(4, 'Santal 33', 'A smoky-rose scent that has become a cult classic', 'Woody Aromatic', 'Violet, Cardamom', 'Iris, Ambrox', 'Sandalwood, Cedarwood', NULL),
+(5, 'Gypsy Water', 'A fresh take on the classic eau de cologne with a bohemian spirit', 'Woody Aromatic', 'Bergamot, Pepper, Juniper', 'Incense, Pine Needles', 'Vanilla, Sandalwood', NULL);
 
 -- Insert fragrance prices
 INSERT INTO fragrance_decant_prices (fragrance_id, decant_size_id, price) VALUES
