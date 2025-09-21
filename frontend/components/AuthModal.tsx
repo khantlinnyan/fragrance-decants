@@ -50,7 +50,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[425px] bg-black border-neutral-800 text-white">
+      <DialogContent className="sm:max-w-[425px] bg-white dark:bg-black border-neutral-200 dark:border-neutral-800 text-black dark:text-white">
         <DialogHeader>
           <DialogTitle className="text-xl font-light">
             {isLogin ? "Sign In" : "Create Account"}
@@ -68,7 +68,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="bg-neutral-900 border-neutral-700 focus:border-white text-white"
+              className="bg-neutral-100 dark:bg-neutral-900 border-neutral-300 dark:border-neutral-700 focus:border-neutral-600 dark:focus:border-white text-black dark:text-white"
             />
           </div>
 
@@ -83,7 +83,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
-                className="bg-neutral-900 border-neutral-700 focus:border-white text-white"
+                className="bg-neutral-100 dark:bg-neutral-900 border-neutral-300 dark:border-neutral-700 focus:border-neutral-600 dark:focus:border-white text-black dark:text-white"
               />
             </div>
           )}
@@ -98,14 +98,14 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="bg-neutral-900 border-neutral-700 focus:border-white text-white"
+              className="bg-neutral-100 dark:bg-neutral-900 border-neutral-300 dark:border-neutral-700 focus:border-neutral-600 dark:focus:border-white text-black dark:text-white"
             />
           </div>
 
           <Button
             type="submit"
             disabled={isLoading}
-            className="w-full bg-white text-black hover:bg-neutral-200 font-light"
+            className="w-full bg-black dark:bg-white text-white dark:text-black hover:bg-neutral-800 dark:hover:bg-neutral-200 font-light"
           >
             {isLoading ? "Please wait..." : isLogin ? "Sign In" : "Create Account"}
           </Button>
@@ -115,7 +115,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
           <button
             type="button"
             onClick={() => setIsLogin(!isLogin)}
-            className="text-sm text-neutral-400 hover:text-white transition-colors"
+            className="text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-white transition-colors"
           >
             {isLogin ? "Need an account? Sign up" : "Already have an account? Sign in"}
           </button>

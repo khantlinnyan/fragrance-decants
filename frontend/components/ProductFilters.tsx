@@ -77,7 +77,7 @@ export function ProductFilters({ onFiltersChange }: ProductFiltersProps) {
                 });
               }, 300);
             }}
-            className="pl-10 bg-neutral-900 border-neutral-700 focus:border-white text-white placeholder:text-neutral-400"
+            className="pl-10 bg-neutral-100 dark:bg-neutral-900 border-neutral-300 dark:border-neutral-700 focus:border-neutral-600 dark:focus:border-white text-black dark:text-white placeholder:text-neutral-500 dark:placeholder:text-neutral-400"
           />
         </div>
       </div>
@@ -85,15 +85,15 @@ export function ProductFilters({ onFiltersChange }: ProductFiltersProps) {
       {/* Mobile Filters */}
       <Sheet>
         <SheetTrigger asChild>
-          <Button variant="outline" className="ml-4 border-neutral-700 text-white hover:bg-neutral-800">
+          <Button variant="outline" className="ml-4 border-neutral-300 dark:border-neutral-700 text-black dark:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800">
             <Filter className="h-4 w-4 mr-2" />
             Filters
           </Button>
         </SheetTrigger>
-        <SheetContent side="right" className="bg-black border-neutral-800 text-white">
+        <SheetContent side="right" className="bg-white dark:bg-black border-neutral-200 dark:border-neutral-800 text-black dark:text-white">
           <SheetHeader>
-            <SheetTitle className="text-white">Filters</SheetTitle>
-            <SheetDescription className="text-neutral-400">
+            <SheetTitle className="text-black dark:text-white">Filters</SheetTitle>
+            <SheetDescription className="text-neutral-600 dark:text-neutral-400">
               Refine your fragrance search
             </SheetDescription>
           </SheetHeader>
@@ -108,7 +108,7 @@ export function ProductFilters({ onFiltersChange }: ProductFiltersProps) {
                 placeholder="e.g. Tom Ford"
                 value={brand}
                 onChange={(e) => setBrand(e.target.value)}
-                className="bg-neutral-900 border-neutral-700 focus:border-white text-white"
+                className="bg-neutral-100 dark:bg-neutral-900 border-neutral-300 dark:border-neutral-700 focus:border-neutral-600 dark:focus:border-white text-black dark:text-white"
               />
             </div>
 
@@ -121,7 +121,7 @@ export function ProductFilters({ onFiltersChange }: ProductFiltersProps) {
                 placeholder="e.g. Oriental Woody"
                 value={scentFamily}
                 onChange={(e) => setScentFamily(e.target.value)}
-                className="bg-neutral-900 border-neutral-700 focus:border-white text-white"
+                className="bg-neutral-100 dark:bg-neutral-900 border-neutral-300 dark:border-neutral-700 focus:border-neutral-600 dark:focus:border-white text-black dark:text-white"
               />
             </div>
 
@@ -134,7 +134,7 @@ export function ProductFilters({ onFiltersChange }: ProductFiltersProps) {
                     type="number"
                     value={minPrice}
                     onChange={(e) => setMinPrice(e.target.value)}
-                    className="bg-neutral-900 border-neutral-700 focus:border-white text-white"
+                    className="bg-neutral-100 dark:bg-neutral-900 border-neutral-300 dark:border-neutral-700 focus:border-neutral-600 dark:focus:border-white text-black dark:text-white"
                   />
                 </div>
                 <div>
@@ -143,7 +143,7 @@ export function ProductFilters({ onFiltersChange }: ProductFiltersProps) {
                     type="number"
                     value={maxPrice}
                     onChange={(e) => setMaxPrice(e.target.value)}
-                    className="bg-neutral-900 border-neutral-700 focus:border-white text-white"
+                    className="bg-neutral-100 dark:bg-neutral-900 border-neutral-300 dark:border-neutral-700 focus:border-neutral-600 dark:focus:border-white text-black dark:text-white"
                   />
                 </div>
               </div>
@@ -152,14 +152,14 @@ export function ProductFilters({ onFiltersChange }: ProductFiltersProps) {
             <div className="flex space-x-2 pt-6">
               <Button
                 onClick={handleApplyFilters}
-                className="flex-1 bg-white text-black hover:bg-neutral-200"
+                className="flex-1 bg-black dark:bg-white text-white dark:text-black hover:bg-neutral-800 dark:hover:bg-neutral-200"
               >
                 Apply Filters
               </Button>
               <Button
                 onClick={handleClearFilters}
                 variant="outline"
-                className="border-neutral-700 text-white hover:bg-neutral-800"
+                className="border-neutral-300 dark:border-neutral-700 text-black dark:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800"
               >
                 Clear
               </Button>

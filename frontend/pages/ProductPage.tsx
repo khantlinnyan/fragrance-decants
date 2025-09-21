@@ -82,17 +82,17 @@ export function ProductPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-black flex items-center justify-center">
-        <div className="text-neutral-400">Loading...</div>
+      <div className="min-h-screen bg-white dark:bg-black flex items-center justify-center">
+        <div className="text-neutral-600 dark:text-neutral-400">Loading...</div>
       </div>
     );
   }
 
   if (!fragrance) {
     return (
-      <div className="min-h-screen bg-black flex items-center justify-center">
+      <div className="min-h-screen bg-white dark:bg-black flex items-center justify-center">
         <div className="text-center">
-          <p className="text-neutral-400 text-lg mb-4">Fragrance not found</p>
+          <p className="text-neutral-600 dark:text-neutral-400 text-lg mb-4">Fragrance not found</p>
           <Button onClick={() => navigate("/")} variant="outline">
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Home
@@ -103,13 +103,13 @@ export function ProductPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-white dark:bg-black">
       <div className="mx-auto max-w-7xl px-4 py-8">
         {/* Back Button */}
         <Button
           onClick={() => navigate("/")}
           variant="ghost"
-          className="mb-8 text-neutral-400 hover:text-white"
+          className="mb-8 text-neutral-600 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-white"
         >
           <ArrowLeft className="h-4 w-4 mr-2" />
           Back to Fragrances
@@ -117,9 +117,9 @@ export function ProductPage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Product Image */}
-          <div className="aspect-square bg-neutral-900 rounded-lg flex items-center justify-center">
-            <div className="w-32 h-32 bg-neutral-800 rounded-full flex items-center justify-center">
-              <span className="text-4xl font-light text-neutral-400">
+          <div className="aspect-square bg-neutral-100 dark:bg-neutral-900 rounded-lg flex items-center justify-center">
+            <div className="w-32 h-32 bg-neutral-200 dark:bg-neutral-800 rounded-full flex items-center justify-center">
+              <span className="text-4xl font-light text-neutral-600 dark:text-neutral-400">
                 {fragrance.brand.charAt(0)}
               </span>
             </div>
@@ -128,43 +128,43 @@ export function ProductPage() {
           {/* Product Details */}
           <div className="space-y-6">
             <div>
-              <p className="text-sm font-light text-neutral-400 uppercase tracking-wider mb-2">
+              <p className="text-sm font-light text-neutral-600 dark:text-neutral-400 uppercase tracking-wider mb-2">
                 {fragrance.brand}
               </p>
-              <h1 className="text-3xl md:text-4xl font-light text-white mb-4">
+              <h1 className="text-3xl md:text-4xl font-light text-black dark:text-white mb-4">
                 {fragrance.name}
               </h1>
-              <p className="text-lg text-neutral-300 leading-relaxed">
+              <p className="text-lg text-neutral-700 dark:text-neutral-300 leading-relaxed">
                 {fragrance.description}
               </p>
             </div>
 
             {/* Scent Profile */}
             <div className="space-y-4">
-              <h3 className="text-lg font-light text-white">Scent Profile</h3>
+              <h3 className="text-lg font-light text-black dark:text-white">Scent Profile</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
                 <div>
-                  <p className="text-neutral-400 mb-1">Top Notes</p>
-                  <p className="text-neutral-200">{fragrance.top_notes}</p>
+                  <p className="text-neutral-600 dark:text-neutral-400 mb-1">Top Notes</p>
+                  <p className="text-neutral-800 dark:text-neutral-200">{fragrance.top_notes}</p>
                 </div>
                 <div>
-                  <p className="text-neutral-400 mb-1">Middle Notes</p>
-                  <p className="text-neutral-200">{fragrance.middle_notes}</p>
+                  <p className="text-neutral-600 dark:text-neutral-400 mb-1">Middle Notes</p>
+                  <p className="text-neutral-800 dark:text-neutral-200">{fragrance.middle_notes}</p>
                 </div>
                 <div>
-                  <p className="text-neutral-400 mb-1">Base Notes</p>
-                  <p className="text-neutral-200">{fragrance.base_notes}</p>
+                  <p className="text-neutral-600 dark:text-neutral-400 mb-1">Base Notes</p>
+                  <p className="text-neutral-800 dark:text-neutral-200">{fragrance.base_notes}</p>
                 </div>
               </div>
               <div>
-                <p className="text-neutral-400 mb-1">Scent Family</p>
-                <p className="text-neutral-200">{fragrance.scent_family}</p>
+                <p className="text-neutral-600 dark:text-neutral-400 mb-1">Scent Family</p>
+                <p className="text-neutral-800 dark:text-neutral-200">{fragrance.scent_family}</p>
               </div>
             </div>
 
             {/* Size Selection */}
             <div className="space-y-4">
-              <h3 className="text-lg font-light text-white">Select Size</h3>
+              <h3 className="text-lg font-light text-black dark:text-white">Select Size</h3>
               <div className="grid grid-cols-1 gap-2">
                 {fragrance.prices.map((price) => (
                   <button
@@ -172,14 +172,14 @@ export function ProductPage() {
                     onClick={() => setSelectedSizeId(price.size_id)}
                     className={`p-4 rounded-lg border transition-all text-left ${
                       selectedSizeId === price.size_id
-                        ? "border-white bg-neutral-900 text-white"
-                        : "border-neutral-700 text-neutral-300 hover:border-neutral-500"
+                        ? "border-black dark:border-white bg-neutral-100 dark:bg-neutral-900 text-black dark:text-white"
+                        : "border-neutral-300 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 hover:border-neutral-500 dark:hover:border-neutral-500"
                     }`}
                   >
                     <div className="flex justify-between items-center">
                       <div>
                         <p className="font-medium">{price.label}</p>
-                        <p className="text-sm text-neutral-400">{price.size_ml}ml</p>
+                        <p className="text-sm text-neutral-600 dark:text-neutral-400">{price.size_ml}ml</p>
                       </div>
                       <p className="text-lg font-light">${price.price.toFixed(2)}</p>
                     </div>
@@ -190,14 +190,14 @@ export function ProductPage() {
 
             {/* Quantity */}
             <div className="space-y-4">
-              <h3 className="text-lg font-light text-white">Quantity</h3>
+              <h3 className="text-lg font-light text-black dark:text-white">Quantity</h3>
               <div className="flex items-center space-x-4">
                 <Button
                   variant="outline"
                   size="sm"
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
                   disabled={quantity <= 1}
-                  className="border-neutral-700 text-white hover:bg-neutral-800"
+                  className="border-neutral-300 dark:border-neutral-700 text-black dark:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800"
                 >
                   <Minus className="h-4 w-4" />
                 </Button>
@@ -208,7 +208,7 @@ export function ProductPage() {
                   variant="outline"
                   size="sm"
                   onClick={() => setQuantity(quantity + 1)}
-                  className="border-neutral-700 text-white hover:bg-neutral-800"
+                  className="border-neutral-300 dark:border-neutral-700 text-black dark:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800"
                 >
                   <Plus className="h-4 w-4" />
                 </Button>
@@ -216,12 +216,12 @@ export function ProductPage() {
             </div>
 
             {/* Price and Add to Cart */}
-            <div className="space-y-4 pt-6 border-t border-neutral-800">
+            <div className="space-y-4 pt-6 border-t border-neutral-200 dark:border-neutral-800">
               <div className="flex items-center justify-between">
-                <span className="text-2xl font-light text-white">
+                <span className="text-2xl font-light text-black dark:text-white">
                   ${selectedPrice ? (selectedPrice.price * quantity).toFixed(2) : "0.00"}
                 </span>
-                <span className="text-sm text-neutral-400">
+                <span className="text-sm text-neutral-600 dark:text-neutral-400">
                   ${selectedPrice?.price.toFixed(2)} each
                 </span>
               </div>
@@ -229,7 +229,7 @@ export function ProductPage() {
               <Button
                 onClick={handleAddToCart}
                 disabled={isAddingToCart || !selectedSizeId}
-                className="w-full bg-white text-black hover:bg-neutral-200 font-light text-lg py-6"
+                className="w-full bg-black dark:bg-white text-white dark:text-black hover:bg-neutral-800 dark:hover:bg-neutral-200 font-light text-lg py-6"
               >
                 {isAddingToCart ? "Adding..." : "Add to Cart"}
               </Button>
