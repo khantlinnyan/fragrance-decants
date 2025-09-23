@@ -6,6 +6,7 @@ import { useAuth } from "../contexts/AuthContext";
 import { useCart } from "../contexts/CartContext";
 import { useToast } from "@/components/ui/use-toast";
 import backend from "~backend/client";
+import { currencyToMMK } from "@/lib/utils";
 
 export function CartPage() {
   const navigate = useNavigate();
@@ -55,7 +56,8 @@ export function CartPage() {
       await backend.orders.create({ user_id: user.id });
       toast({
         title: "Order placed successfully!",
-        description: "Thank you for your purchase. You will receive a confirmation email shortly.",
+        description:
+          "Thank you for your purchase. You will receive a confirmation email shortly.",
       });
       await refreshCart();
       navigate("/");
@@ -63,7 +65,8 @@ export function CartPage() {
       console.error("Failed to create order:", error);
       toast({
         title: "Checkout failed",
-        description: "There was an error processing your order. Please try again.",
+        description:
+          "There was an error processing your order. Please try again.",
         variant: "destructive",
       });
     } finally {
@@ -83,10 +86,14 @@ export function CartPage() {
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Fragrances
           </Button>
-          
+
           <div className="text-center py-20">
-            <h1 className="text-2xl font-light text-black dark:text-white mb-4">Sign in to view your cart</h1>
-            <p className="text-neutral-600 dark:text-neutral-400">You need to be signed in to see your shopping cart.</p>
+            <h1 className="text-2xl font-light text-black dark:text-white mb-4">
+              Sign in to view your cart
+            </h1>
+            <p className="text-neutral-600 dark:text-neutral-400">
+              You need to be signed in to see your shopping cart.
+            </p>
           </div>
         </div>
       </div>
@@ -106,11 +113,15 @@ export function CartPage() {
           Back to Fragrances
         </Button>
 
-        <h1 className="text-3xl font-light text-black dark:text-white mb-8">Shopping Cart</h1>
+        <h1 className="text-3xl font-light text-black dark:text-white mb-8">
+          Shopping Cart
+        </h1>
 
         {!cart || cart.items.length === 0 ? (
           <div className="text-center py-20">
-            <p className="text-xl text-neutral-600 dark:text-neutral-400 mb-4">Your cart is empty</p>
+            <p className="text-xl text-neutral-600 dark:text-neutral-400 mb-4">
+              Your cart is empty
+            </p>
             <p className="text-neutral-500 dark:text-neutral-500 mb-8">
               Discover our curated selection of luxury fragrances
             </p>
@@ -136,7 +147,7 @@ export function CartPage() {
                         {item.brand_name.charAt(0)}
                       </span>
                     </div>
-                    
+
                     <div>
                       <p className="text-xs font-light text-neutral-600 dark:text-neutral-400 uppercase tracking-wider">
                         {item.brand_name}
@@ -153,13 +164,13 @@ export function CartPage() {
                   <div className="flex items-center space-x-4">
                     <div className="text-right">
                       <p className="text-lg font-light text-black dark:text-white">
-                        ${item.total_price.toFixed(2)}
+                        MMK {currencyToMMK(item.total_price)}
                       </p>
                       <p className="text-sm text-neutral-600 dark:text-neutral-400">
-                        ${item.price_per_item.toFixed(2)} each
+                        MMK {currencyToMMK(item.price_per_item)} each
                       </p>
                     </div>
-                    
+
                     <Button
                       variant="ghost"
                       size="sm"
@@ -177,26 +188,30 @@ export function CartPage() {
             <div className="border-t border-neutral-200 dark:border-neutral-800 pt-8">
               <div className="bg-neutral-100 dark:bg-neutral-900 rounded-lg p-6 space-y-4">
                 <div className="flex justify-between items-center text-lg">
-                  <span className="font-light text-black dark:text-white">Subtotal</span>
                   <span className="font-light text-black dark:text-white">
-                    ${cart.total_amount.toFixed(2)}
+                    Subtotal
+                  </span>
+                  <span className="font-light text-black dark:text-white">
+                    MMK {currencyToMMK(cart.total_amount)}
                   </span>
                 </div>
-                
+
                 <div className="flex justify-between items-center text-sm text-neutral-600 dark:text-neutral-400">
                   <span>Shipping</span>
                   <span>Calculated at checkout</span>
                 </div>
-                
+
                 <hr className="border-neutral-300 dark:border-neutral-700" />
-                
+
                 <div className="flex justify-between items-center text-xl">
-                  <span className="font-light text-black dark:text-white">Total</span>
                   <span className="font-light text-black dark:text-white">
-                    ${cart.total_amount.toFixed(2)}
+                    Total
+                  </span>
+                  <span className="font-light text-black dark:text-white">
+                    MMK {currencyToMMK(cart.total_amount)}
                   </span>
                 </div>
-                
+
                 <Button
                   onClick={handleCheckout}
                   disabled={isCheckingOut}

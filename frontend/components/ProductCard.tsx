@@ -1,3 +1,4 @@
+import { currencyToMMK } from "@/lib/utils";
 import { Link } from "react-router-dom";
 import type { Fragrance } from "~backend/products/list";
 
@@ -6,7 +7,7 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ fragrance }: ProductCardProps) {
-  const minPrice = Math.min(...fragrance.prices.map(p => p.price));
+  const minPrice = Math.min(...fragrance.prices.map((p) => p.price));
 
   return (
     <Link to={`/product/${fragrance.id}`} className="group block">
@@ -19,7 +20,7 @@ export function ProductCard({ fragrance }: ProductCardProps) {
             </span>
           </div>
         </div>
-        
+
         <div className="p-6">
           <div className="mb-2">
             <p className="text-xs font-light text-neutral-600 dark:text-neutral-400 uppercase tracking-wider">
@@ -29,20 +30,28 @@ export function ProductCard({ fragrance }: ProductCardProps) {
               {fragrance.name}
             </h3>
           </div>
-          
+
           <p className="text-sm text-neutral-600 dark:text-neutral-500 mb-4 line-clamp-2">
             {fragrance.description}
           </p>
-          
+
           <div className="mb-4">
-            <p className="text-xs text-neutral-600 dark:text-neutral-400 mb-1">Scent Family</p>
-            <p className="text-sm text-neutral-800 dark:text-neutral-300">{fragrance.scent_family}</p>
+            <p className="text-xs text-neutral-600 dark:text-neutral-400 mb-1">
+              Scent Family
+            </p>
+            <p className="text-sm text-neutral-800 dark:text-neutral-300">
+              {fragrance.scent_family}
+            </p>
           </div>
-          
+
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-xs text-neutral-600 dark:text-neutral-400">From</p>
-              <p className="text-lg font-light text-black dark:text-white">${minPrice.toFixed(2)}</p>
+              <p className="text-xs text-neutral-600 dark:text-neutral-400">
+                From
+              </p>
+              <p className="text-lg font-light text-black dark:text-white">
+                MMK {currencyToMMK(minPrice)}
+              </p>
             </div>
             <div className="text-xs text-neutral-600 dark:text-neutral-400">
               {fragrance.prices.length} sizes

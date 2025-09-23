@@ -7,6 +7,7 @@ import { useCart } from "../contexts/CartContext";
 import { useToast } from "@/components/ui/use-toast";
 import backend from "~backend/client";
 import type { Fragrance } from "~backend/products/get";
+import { currencyToMMK } from "@/lib/utils";
 
 export function ProductPage() {
   const { id } = useParams<{ id: string }>();
@@ -78,7 +79,9 @@ export function ProductPage() {
     }
   };
 
-  const selectedPrice = fragrance?.prices.find(p => p.size_id === selectedSizeId);
+  const selectedPrice = fragrance?.prices.find(
+    (p) => p.size_id === selectedSizeId
+  );
 
   if (isLoading) {
     return (
@@ -92,7 +95,9 @@ export function ProductPage() {
     return (
       <div className="min-h-screen bg-white dark:bg-black flex items-center justify-center">
         <div className="text-center">
-          <p className="text-neutral-600 dark:text-neutral-400 text-lg mb-4">Fragrance not found</p>
+          <p className="text-neutral-600 dark:text-neutral-400 text-lg mb-4">
+            Fragrance not found
+          </p>
           <Button onClick={() => navigate("/")} variant="outline">
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Home
@@ -141,30 +146,50 @@ export function ProductPage() {
 
             {/* Scent Profile */}
             <div className="space-y-4">
-              <h3 className="text-lg font-light text-black dark:text-white">Scent Profile</h3>
+              <h3 className="text-lg font-light text-black dark:text-white">
+                Scent Profile
+              </h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
                 <div>
-                  <p className="text-neutral-600 dark:text-neutral-400 mb-1">Top Notes</p>
-                  <p className="text-neutral-800 dark:text-neutral-200">{fragrance.top_notes}</p>
+                  <p className="text-neutral-600 dark:text-neutral-400 mb-1">
+                    Top Notes
+                  </p>
+                  <p className="text-neutral-800 dark:text-neutral-200">
+                    {fragrance.top_notes}
+                  </p>
                 </div>
                 <div>
-                  <p className="text-neutral-600 dark:text-neutral-400 mb-1">Middle Notes</p>
-                  <p className="text-neutral-800 dark:text-neutral-200">{fragrance.middle_notes}</p>
+                  <p className="text-neutral-600 dark:text-neutral-400 mb-1">
+                    Middle Notes
+                  </p>
+                  <p className="text-neutral-800 dark:text-neutral-200">
+                    {fragrance.middle_notes}
+                  </p>
                 </div>
                 <div>
-                  <p className="text-neutral-600 dark:text-neutral-400 mb-1">Base Notes</p>
-                  <p className="text-neutral-800 dark:text-neutral-200">{fragrance.base_notes}</p>
+                  <p className="text-neutral-600 dark:text-neutral-400 mb-1">
+                    Base Notes
+                  </p>
+                  <p className="text-neutral-800 dark:text-neutral-200">
+                    {fragrance.base_notes}
+                  </p>
                 </div>
               </div>
               <div>
-                <p className="text-neutral-600 dark:text-neutral-400 mb-1">Scent Family</p>
-                <p className="text-neutral-800 dark:text-neutral-200">{fragrance.scent_family}</p>
+                <p className="text-neutral-600 dark:text-neutral-400 mb-1">
+                  Scent Family
+                </p>
+                <p className="text-neutral-800 dark:text-neutral-200">
+                  {fragrance.scent_family}
+                </p>
               </div>
             </div>
 
             {/* Size Selection */}
             <div className="space-y-4">
-              <h3 className="text-lg font-light text-black dark:text-white">Select Size</h3>
+              <h3 className="text-lg font-light text-black dark:text-white">
+                Select Size
+              </h3>
               <div className="grid grid-cols-1 gap-2">
                 {fragrance.prices.map((price) => (
                   <button
@@ -179,9 +204,13 @@ export function ProductPage() {
                     <div className="flex justify-between items-center">
                       <div>
                         <p className="font-medium">{price.label}</p>
-                        <p className="text-sm text-neutral-600 dark:text-neutral-400">{price.size_ml}ml</p>
+                        <p className="text-sm text-neutral-600 dark:text-neutral-400">
+                          {price.size_ml}ml
+                        </p>
                       </div>
-                      <p className="text-lg font-light">${price.price.toFixed(2)}</p>
+                      <p className="text-lg font-light">
+                        MMK {currencyToMMK(price.price)}
+                      </p>
                     </div>
                   </button>
                 ))}
@@ -190,7 +219,9 @@ export function ProductPage() {
 
             {/* Quantity */}
             <div className="space-y-4">
-              <h3 className="text-lg font-light text-black dark:text-white">Quantity</h3>
+              <h3 className="text-lg font-light text-black dark:text-white">
+                Quantity
+              </h3>
               <div className="flex items-center space-x-4">
                 <Button
                   variant="outline"
@@ -219,13 +250,16 @@ export function ProductPage() {
             <div className="space-y-4 pt-6 border-t border-neutral-200 dark:border-neutral-800">
               <div className="flex items-center justify-between">
                 <span className="text-2xl font-light text-black dark:text-white">
-                  ${selectedPrice ? (selectedPrice.price * quantity).toFixed(2) : "0.00"}
+                  MMK <span></span>
+                  {selectedPrice
+                    ? currencyToMMK(selectedPrice.price * quantity)
+                    : "0.00"}
                 </span>
                 <span className="text-sm text-neutral-600 dark:text-neutral-400">
-                  ${selectedPrice?.price.toFixed(2)} each
+                  MMK {currencyToMMK(selectedPrice?.price ?? 0)} each
                 </span>
               </div>
-              
+
               <Button
                 onClick={handleAddToCart}
                 disabled={isAddingToCart || !selectedSizeId}

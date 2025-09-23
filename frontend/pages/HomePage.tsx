@@ -1,12 +1,22 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { ProductCard } from "../components/ProductCard";
 import { ProductFilters } from "../components/ProductFilters";
 import backend from "~backend/client";
 import type { ListProductsResponse } from "~backend/products/list";
 
+// A unique key for our query, it's good practice to make this an array
+// with the name and dependencies (filters) so TanStack Query can
+// automatically re-fetch when the filters change.
+const getFragrancesQueryKey = (filters) => ["fragrances", filters];
+
+// The actual async function that fetches the data.
+const fetchFragrances = async (filters) => {
+  const response = await backend.products.list(filters);
+  return response;
+};
+
 export function HomePage() {
-  const [products, setProducts] = useState<ListProductsResponse | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
   const [filters, setFilters] = useState({
     search: "",
     brand: "",
@@ -15,21 +25,25 @@ export function HomePage() {
     max_price: undefined as number | undefined,
   });
 
-  const fetchProducts = async () => {
-    try {
-      setIsLoading(true);
-      const response = await backend.products.list(filters);
-      setProducts(response);
-    } catch (error) {
-      console.error("Failed to fetch products:", error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  const {
+    data: products,
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: getFragrancesQueryKey(filters),
+    queryFn: () => fetchFragrances(filters),
+  });
 
-  useEffect(() => {
-    fetchProducts();
-  }, [filters]);
+  if (isError) {
+    return (
+      <div className="text-center py-20">
+        <p className="text-red-500 text-lg">Failed to load fragrances.</p>
+        <p className="text-neutral-500 dark:text-neutral-500 text-sm mt-2">
+          Please try again later.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-white dark:bg-black">
@@ -39,11 +53,13 @@ export function HomePage() {
           <h1 className="text-4xl md:text-6xl font-extralight tracking-tight text-black dark:text-white mb-6">
             Curated Luxury
             <br />
-            <span className="text-neutral-600 dark:text-neutral-400">Fragrance Decants</span>
+            <span className="text-neutral-600 dark:text-neutral-400">
+              Fragrance Decants
+            </span>
           </h1>
           <p className="text-xl font-light text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
-            Discover exceptional fragrances in sample sizes. 
-            Experience luxury without commitment.
+            Discover exceptional fragrances in sample sizes. Experience luxury
+            without commitment.
           </p>
         </div>
       </section>
@@ -52,10 +68,12 @@ export function HomePage() {
       <section className="px-4 pb-20">
         <div className="mx-auto max-w-7xl">
           <ProductFilters onFiltersChange={setFilters} />
-          
+
           {isLoading ? (
             <div className="flex items-center justify-center py-20">
-              <div className="text-neutral-600 dark:text-neutral-400">Loading fragrances...</div>
+              <div className="text-neutral-600 dark:text-neutral-400">
+                Loading fragrances...
+              </div>
             </div>
           ) : products && products.fragrances.length > 0 ? (
             <>
@@ -64,16 +82,19 @@ export function HomePage() {
                   <ProductCard key={fragrance.id} fragrance={fragrance} />
                 ))}
               </div>
-              
+
               <div className="mt-12 text-center">
                 <p className="text-sm text-neutral-600 dark:text-neutral-400">
-                  Showing {products.fragrances.length} of {products.total} fragrances
+                  Showing {products.fragrances.length} of {products.total}{" "}
+                  fragrances
                 </p>
               </div>
             </>
           ) : (
             <div className="text-center py-20">
-              <p className="text-neutral-600 dark:text-neutral-400 text-lg">No fragrances found</p>
+              <p className="text-neutral-600 dark:text-neutral-400 text-lg">
+                No fragrances found
+              </p>
               <p className="text-neutral-500 dark:text-neutral-500 text-sm mt-2">
                 Try adjusting your search or filters
               </p>
