@@ -1,11 +1,21 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from "react";
 import { useAuth } from "./AuthContext";
 import backend from "~backend/client";
 import type { GetCartResponse } from "~backend/cart/get";
 
 interface CartContextType {
   cart: GetCartResponse | null;
-  addToCart: (fragranceId: number, decantSizeId: number, quantity: number) => Promise<void>;
+  addToCart: (
+    fragranceId: number,
+    decantSizeId: number,
+    quantity: number
+  ) => Promise<void>;
   removeFromCart: (cartItemId: number) => Promise<void>;
   refreshCart: () => Promise<void>;
   isLoading: boolean;
@@ -36,7 +46,11 @@ export function CartProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  const addToCart = async (fragranceId: number, decantSizeId: number, quantity: number) => {
+  const addToCart = async (
+    fragranceId: number,
+    decantSizeId: number,
+    quantity: number
+  ) => {
     if (!user) throw new Error("Must be logged in to add to cart");
 
     try {
@@ -73,7 +87,9 @@ export function CartProvider({ children }: { children: ReactNode }) {
   }, [user]);
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, refreshCart, isLoading }}>
+    <CartContext.Provider
+      value={{ cart, addToCart, removeFromCart, refreshCart, isLoading }}
+    >
       {children}
     </CartContext.Provider>
   );

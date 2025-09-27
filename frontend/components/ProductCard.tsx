@@ -1,18 +1,26 @@
+// src/components/ProductCard.tsx
 import { currencyToMMK } from "@/lib/utils";
 import { Link } from "react-router-dom";
 import type { Fragrance } from "~backend/products/list";
+// Import the new button component
+import { QuickAddButton } from "./quickadd/quickadd-btn";
 
+// Add a new prop for the Quick Add functionality
 interface ProductCardProps {
   fragrance: Fragrance;
+  onQuickAdd: (fragrance: Fragrance) => void; // Function to open the modal
 }
 
-export function ProductCard({ fragrance }: ProductCardProps) {
+export function ProductCard({ fragrance, onQuickAdd }: ProductCardProps) {
   const minPrice = Math.min(...fragrance.prices.map((p) => p.price));
 
   return (
-    <Link to={`/product/${fragrance.id}`} className="group block">
+    <Link to={`/product/${fragrance.id}`} className="group block relative">
       <div className="bg-neutral-100 dark:bg-neutral-900 rounded-lg overflow-hidden transition-all duration-300 hover:bg-neutral-200 dark:hover:bg-neutral-800">
-        {/* Image placeholder */}
+        {/* Quick Add Button - positioned absolutely over the card */}
+        <QuickAddButton onOpen={() => onQuickAdd(fragrance)} />
+
+        {/* Image placeholder (now relative to the button) */}
         <div className="aspect-square bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center">
           <div className="w-16 h-16 bg-neutral-300 dark:bg-neutral-700 rounded-full flex items-center justify-center">
             <span className="text-2xl font-light text-neutral-600 dark:text-neutral-400">

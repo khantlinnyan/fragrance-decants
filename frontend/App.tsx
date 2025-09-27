@@ -8,6 +8,7 @@ import { AuthProvider } from "./contexts/AuthContext";
 import { CartProvider } from "./contexts/CartContext";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { AppLayout } from "./AppLayout";
 
 const queryClient = new QueryClient();
 
@@ -19,14 +20,13 @@ export default function App() {
           <AuthProvider>
             <CartProvider>
               <Router>
-                <Header />
-                <main>
+                <AppLayout>
                   <Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/product/:id" element={<ProductPage />} />
                     <Route path="/cart" element={<CartPage />} />
                   </Routes>
-                </main>
+                </AppLayout>
                 <Toaster />
               </Router>
             </CartProvider>

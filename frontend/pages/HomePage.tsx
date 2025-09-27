@@ -1,9 +1,18 @@
+// src/pages/HomePage.tsx
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
+// Import ProductCard and the new Modal
 import { ProductCard } from "../components/ProductCard";
+import { QuickAddModal } from "@/components/quickadd/quickadd-modal";
 import { ProductFilters } from "../components/ProductFilters";
 import backend from "~backend/client";
-import type { ListProductsResponse } from "~backend/products/list";
+import type { ListProductsResponse, Fragrance } from "~backend/products/list";
+
+// Ensure the Fragrance type has the prices property for the QuickAddModal
+// We assume it's available, based on how ProductCard uses it.
+type FragranceWithPrices = Fragrance & {
+  prices: { size_id: number; label: string; size_ml: number; price: number }[];
+};
 
 // A unique key for our query, it's good practice to make this an array
 // with the name and dependencies (filters) so TanStack Query can
@@ -11,7 +20,7 @@ import type { ListProductsResponse } from "~backend/products/list";
 const getFragrancesQueryKey = (filters) => ["fragrances", filters];
 
 // The actual async function that fetches the data.
-const fetchFragrances = async (filters) => {
+const fetchFragrances = async (filters: any) => {
   const response = await backend.products.list(filters);
   return response;
 };
@@ -25,6 +34,10 @@ export function HomePage() {
     max_price: undefined as number | undefined,
   });
 
+  // State for the Quick Add Modal
+  const [quickAddFragrance, setQuickAddFragrance] =
+    useState<FragranceWithPrices | null>(null);
+
   const {
     data: products,
     isLoading,
@@ -33,6 +46,18 @@ export function HomePage() {
     queryKey: getFragrancesQueryKey(filters),
     queryFn: () => fetchFragrances(filters),
   });
+
+  // Handlers for the Quick Add Modal
+  const handleQuickAdd = (fragrance: FragranceWithPrices) => {
+    // Only open if the product has pricing data
+    if (fragrance.prices && fragrance.prices.length > 0) {
+      setQuickAddFragrance(fragrance);
+    }
+  };
+
+  const handleCloseQuickAdd = () => {
+    setQuickAddFragrance(null);
+  };
 
   if (isError) {
     return (
@@ -79,7 +104,11 @@ export function HomePage() {
             <>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 {products.fragrances.map((fragrance) => (
-                  <ProductCard key={fragrance.id} fragrance={fragrance} />
+                  <ProductCard
+                    key={fragrance.id}
+                    fragrance={fragrance as FragranceWithPrices}
+                    onQuickAdd={handleQuickAdd} // Pass the handler
+                  />
                 ))}
               </div>
 
@@ -102,6 +131,15 @@ export function HomePage() {
           )}
         </div>
       </section>
+
+      {/* Quick Add Modal is rendered here, only when a product is selected */}
+      {quickAddFragrance && (
+        <QuickAddModal
+          fragrance={quickAddFragrance}
+          isOpen={!!quickAddFragrance} // Open if quickAddFragrance is not null
+          onClose={handleCloseQuickAdd} // Handler to close the modal
+        />
+      )}
     </div>
   );
 }
