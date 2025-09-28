@@ -4,6 +4,8 @@ import { Header } from "./components/Header";
 import { HomePage } from "./pages/HomePage";
 import { ProductPage } from "./pages/ProductPage";
 import { CartPage } from "./pages/CartPage";
+import GuestCheckoutPage from "./pages/GuestCheckoutPage";
+import OrderConfirmationPage from "./pages/OrderConfirmationPage";
 import { AuthProvider } from "./contexts/AuthContext";
 import { CartProvider } from "./contexts/CartContext";
 import { ThemeProvider } from "./contexts/ThemeContext";
@@ -25,6 +27,8 @@ export default function App() {
                     <Route path="/" element={<HomePage />} />
                     <Route path="/product/:id" element={<ProductPage />} />
                     <Route path="/cart" element={<CartPage />} />
+                    <Route path="/guest-checkout" element={<GuestCheckoutPage />} />
+                    <Route path="/order-confirmation/:orderId" element={<OrderConfirmationPage />} />
                   </Routes>
                 </AppLayout>
                 <Toaster />

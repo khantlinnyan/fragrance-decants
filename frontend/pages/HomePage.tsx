@@ -17,7 +17,7 @@ type FragranceWithPrices = Fragrance & {
 // A unique key for our query, it's good practice to make this an array
 // with the name and dependencies (filters) so TanStack Query can
 // automatically re-fetch when the filters change.
-const getFragrancesQueryKey = (filters) => ["fragrances", filters];
+const getFragrancesQueryKey = (filters: any) => ["fragrances", filters];
 
 // The actual async function that fetches the data.
 const fetchFragrances = async (filters: any) => {

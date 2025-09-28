@@ -23,6 +23,7 @@ export interface Fragrance {
   base_notes: string;
   image_url: string;
   prices: Array<{
+    size_id: number;
     size_ml: number;
     label: string;
     price: number;
@@ -88,6 +89,7 @@ export const list = api<ListProductsRequest, ListProductsResponse>(
         f.middle_notes,
         f.base_notes,
         f.image_url,
+        ds.id as size_id,
         ds.size_ml,
         ds.label,
         fdp.price
@@ -110,6 +112,7 @@ export const list = api<ListProductsRequest, ListProductsResponse>(
       middle_notes: string;
       base_notes: string;
       image_url: string;
+      size_id: number;
       size_ml: number;
       label: string;
       price: number;
@@ -136,6 +139,7 @@ export const list = api<ListProductsRequest, ListProductsResponse>(
 
       const fragrance = fragranceMap.get(row.id)!;
       fragrance.prices.push({
+        size_id: row.size_id,
         size_ml: row.size_ml,
         label: row.label,
         price: row.price,

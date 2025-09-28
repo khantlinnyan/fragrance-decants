@@ -11,17 +11,14 @@ import { ThemeToggle } from "./ThemeToggle";
 
 interface HeaderProps {
   onCartClick: () => void; // Function to open the cart drawer
+  cartItemCount: number;
 }
 
-export function Header({ onCartClick }: HeaderProps) {
+export function Header({ onCartClick, cartItemCount }: HeaderProps) {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const { user, logout } = useAuth();
-  const { cart } = useCart();
-
-  const cartItemCount =
-    cart?.items.reduce((sum, item) => sum + item.quantity, 0) || 0;
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();

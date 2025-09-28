@@ -17,6 +17,7 @@ export function ProductPage() {
   const [quantity, setQuantity] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const [isAddingToCart, setIsAddingToCart] = useState(false);
+  const [isBuyingNow, setIsBuyingNow] = useState(false);
   const { user } = useAuth();
   const { addToCart } = useCart();
   const { toast } = useToast();
@@ -48,25 +49,42 @@ export function ProductPage() {
     fetchFragrance();
   }, [id, toast]);
 
-  const handleAddToCart = async () => {
-    if (!user) {
-      toast({
-        title: "Please sign in",
-        description: "You need to sign in to add items to your cart",
-        variant: "destructive",
-      });
-      return;
+  const getSessionId = () => {
+    let sessionId = sessionStorage.getItem('guest_session_id');
+    if (!sessionId) {
+      sessionId = Math.random().toString(36).substr(2, 9);
+      sessionStorage.setItem('guest_session_id', sessionId);
     }
+    return sessionId;
+  };
 
+  const handleAddToCart = async () => {
     if (!fragrance || !selectedSizeId) return;
 
     try {
       setIsAddingToCart(true);
-      await addToCart(fragrance.id, selectedSizeId, quantity);
-      toast({
-        title: "Added to cart",
-        description: `${fragrance.name} has been added to your cart`,
-      });
+      
+      if (user) {
+        // User is logged in, use regular cart
+        await addToCart(fragrance.id, selectedSizeId, quantity);
+        toast({
+          title: "Added to cart",
+          description: `${fragrance.name} has been added to your cart`,
+        });
+      } else {
+        // Guest user, use guest cart
+        const sessionId = getSessionId();
+        await backend.guest_cart.add({
+          session_id: sessionId,
+          fragrance_id: fragrance.id,
+          decant_size_id: selectedSizeId,
+          quantity: quantity,
+        });
+        toast({
+          title: "Added to cart",
+          description: `${fragrance.name} has been added to your cart`,
+        });
+      }
     } catch (error) {
       console.error("Failed to add to cart:", error);
       toast({
@@ -76,6 +94,36 @@ export function ProductPage() {
       });
     } finally {
       setIsAddingToCart(false);
+    }
+  };
+
+  const handleBuyNow = async () => {
+    if (!fragrance || !selectedSizeId) return;
+
+    try {
+      setIsBuyingNow(true);
+      
+      const sessionId = getSessionId();
+      
+      // Add item to guest cart
+      await backend.guest_cart.add({
+        session_id: sessionId,
+        fragrance_id: fragrance.id,
+        decant_size_id: selectedSizeId,
+        quantity: quantity,
+      });
+      
+      // Navigate directly to guest checkout
+      navigate('/guest-checkout');
+    } catch (error) {
+      console.error("Failed to buy now:", error);
+      toast({
+        title: "Error",
+        description: "Failed to proceed to checkout",
+        variant: "destructive",
+      });
+    } finally {
+      setIsBuyingNow(false);
     }
   };
 
@@ -260,13 +308,24 @@ export function ProductPage() {
                 </span>
               </div>
 
-              <Button
-                onClick={handleAddToCart}
-                disabled={isAddingToCart || !selectedSizeId}
-                className="w-full bg-black dark:bg-white text-white dark:text-black hover:bg-neutral-800 dark:hover:bg-neutral-200 font-light text-lg py-6"
-              >
-                {isAddingToCart ? "Adding..." : "Add to Cart"}
-              </Button>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <Button
+                  onClick={handleAddToCart}
+                  disabled={isAddingToCart || !selectedSizeId}
+                  variant="outline"
+                  className="bg-white dark:bg-black text-black dark:text-white border-black dark:border-white hover:bg-neutral-100 dark:hover:bg-neutral-900 font-light text-lg py-6"
+                >
+                  {isAddingToCart ? "Adding..." : "Add to Cart"}
+                </Button>
+                
+                <Button
+                  onClick={handleBuyNow}
+                  disabled={isBuyingNow || !selectedSizeId}
+                  className="bg-black dark:bg-white text-white dark:text-black hover:bg-neutral-800 dark:hover:bg-neutral-200 font-light text-lg py-6"
+                >
+                  {isBuyingNow ? "Processing..." : "Buy Now"}
+                </Button>
+              </div>
             </div>
           </div>
         </div>
