@@ -1,5 +1,5 @@
 import { api, APIError } from "encore.dev/api";
-import db from "../db";
+import db from "../prisma/database";
 
 export interface GetProductRequest {
   id: number;
@@ -79,7 +79,7 @@ export const get = api<GetProductRequest, Fragrance>(
       middle_notes: first.middle_notes,
       base_notes: first.base_notes,
       image_url: first.image_url,
-      prices: rows.map(row => ({
+      prices: rows.map((row) => ({
         size_id: row.size_id,
         size_ml: row.size_ml,
         label: row.label,

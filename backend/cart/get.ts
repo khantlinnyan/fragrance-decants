@@ -1,5 +1,5 @@
 import { api } from "encore.dev/api";
-import db from "../db";
+import db from "../prisma/database";
 
 export interface GetCartRequest {
   user_id: number;
@@ -57,7 +57,7 @@ export const get = api<GetCartRequest, GetCartResponse>(
       ORDER BY ci.created_at DESC
     `;
 
-    const cartItems: CartItem[] = items.map(item => ({
+    const cartItems: CartItem[] = items.map((item) => ({
       id: item.id,
       fragrance_id: item.fragrance_id,
       fragrance_name: item.fragrance_name,
@@ -70,7 +70,10 @@ export const get = api<GetCartRequest, GetCartResponse>(
       total_price: item.quantity * item.price_per_item,
     }));
 
-    const total_amount = cartItems.reduce((sum, item) => sum + item.total_price, 0);
+    const total_amount = cartItems.reduce(
+      (sum, item) => sum + item.total_price,
+      0
+    );
 
     return {
       items: cartItems,

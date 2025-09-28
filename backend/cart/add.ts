@@ -1,5 +1,5 @@
 import { api, APIError } from "encore.dev/api";
-import db from "../db";
+import db from "../prisma/database";
 
 export interface AddToCartRequest {
   user_id: number;
@@ -51,7 +51,7 @@ export const add = api<AddToCartRequest, CartItem>(
         VALUES (${req.user_id}, ${req.fragrance_id}, ${req.decant_size_id}, ${req.quantity})
         RETURNING id
       `;
-      
+
       if (!newItem) {
         throw APIError.internal("Failed to add item to cart");
       }

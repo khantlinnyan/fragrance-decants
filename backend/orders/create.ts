@@ -1,5 +1,5 @@
 import { api, APIError } from "encore.dev/api";
-import db from "../db";
+import db from "../prisma/database";
 
 export interface CreateOrderRequest {
   user_id: number;
@@ -54,7 +54,10 @@ export const create = api<CreateOrderRequest, Order>(
     }
 
     // Calculate total
-    const totalAmount = cartItems.reduce((sum, item) => sum + (item.quantity * item.price_per_item), 0);
+    const totalAmount = cartItems.reduce(
+      (sum, item) => sum + item.quantity * item.price_per_item,
+      0
+    );
 
     // Create order
     const order = await db.queryRow<{ id: number; created_at: Date }>`
@@ -81,9 +84,9 @@ export const create = api<CreateOrderRequest, Order>(
     return {
       id: order.id,
       total_amount: totalAmount,
-      status: 'confirmed',
+      status: "confirmed",
       created_at: order.created_at,
-      items: cartItems.map(item => ({
+      items: cartItems.map((item) => ({
         fragrance_name: item.fragrance_name,
         brand_name: item.brand_name,
         size_label: item.size_label,

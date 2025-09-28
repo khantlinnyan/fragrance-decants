@@ -4,12 +4,16 @@
   "type": "module",
   "packageManager": "bun",
   "scripts": {
-    "build": "cd ../frontend \u0026\u0026 bun install \u0026\u0026 vite build --outDir=../backend/frontend/dist"
+    "build": "cd ../frontend && bun install && vite build --outDir=../backend/frontend/dist"
   },
   "dependencies": {
+    "@prisma/adapter-pg": "^6.16.2",
+    "@prisma/client": "^6.16.2",
+    "dotenv": "^17.2.2",
     "encore.dev": "^1.50.0"
   },
   "devDependencies": {
+    "prisma": "^6.16.2",
     "typescript": "^5.9.2"
   }
 }

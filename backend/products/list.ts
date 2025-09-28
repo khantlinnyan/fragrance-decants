@@ -1,6 +1,6 @@
 import { api } from "encore.dev/api";
 import { Query } from "encore.dev/api";
-import db from "../db";
+import db from "../prisma/database";
 
 export interface ListProductsRequest {
   search?: Query<string>;
@@ -47,7 +47,9 @@ export const list = api<ListProductsRequest, ListProductsResponse>(
 
     if (req.search) {
       paramCount++;
-      whereConditions.push(`(f.name ILIKE $${paramCount} OR b.name ILIKE $${paramCount} OR f.description ILIKE $${paramCount})`);
+      whereConditions.push(
+        `(f.name ILIKE $${paramCount} OR b.name ILIKE $${paramCount} OR f.description ILIKE $${paramCount})`
+      );
       params.push(`%${req.search}%`);
     }
 
@@ -63,7 +65,10 @@ export const list = api<ListProductsRequest, ListProductsResponse>(
       params.push(`%${req.scent_family}%`);
     }
 
-    const whereClause = whereConditions.length > 0 ? `WHERE ${whereConditions.join(' AND ')}` : '';
+    const whereClause =
+      whereConditions.length > 0
+        ? `WHERE ${whereConditions.join(" AND ")}`
+        : "";
 
     // Get total count
     const countQuery = `
@@ -73,8 +78,11 @@ export const list = api<ListProductsRequest, ListProductsResponse>(
       ${whereClause}
     `;
 
-    const totalResult = await db.rawQueryRow<{ total: string }>(countQuery, ...params);
-    const total = parseInt(totalResult?.total || '0');
+    const totalResult = await db.rawQueryRow<{ total: string }>(
+      countQuery,
+      ...params
+    );
+    const total = parseInt(totalResult?.total || "0");
 
     // Get fragrances with prices
     const query = `

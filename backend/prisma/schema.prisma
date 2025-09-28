@@ -1,0 +1,160 @@
+// schema.prisma
+
+generator client {
+  provider        = "prisma-client"
+  output          = "./generated"
+  previewFeatures = ["queryCompiler", "driverAdapters"]
+}
+
+datasource db {
+  provider = "postgresql"
+  // IMPORTANT: Use shadow database URL for Prisma CLI operations
+  // Assuming a standard environment variable for the main connection
+  url      = env("DB_URL")
+  // Uncomment the line below if SHADOW_DB_URL is specifically required for migrations
+  // shadowDatabaseUrl = env("SHADOW_DB_UR") 
+}
+
+// -----------------------------------------------------------
+// 1. Core User Model
+// -----------------------------------------------------------
+
+model users {
+  // id BIGSERIAL PRIMARY KEY
+  id         BigInt     @id @default(autoincrement())
+  email      String     @unique @db.Text
+  name       String     @db.Text
+  // created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+  created_at DateTime   @default(now()) @db.Timestamptz(6)
+
+  // Relationships
+  cart_items cart_items[]
+  orders     orders[]
+
+  @@map("users")
+}
+
+// -----------------------------------------------------------
+// 2. Product Catalog Models
+// -----------------------------------------------------------
+
+model brands {
+  id          BigInt      @id @default(autoincrement())
+  name        String      @unique @db.Text
+  description String?     @db.Text
+  created_at  DateTime    @default(now()) @db.Timestamptz(6)
+
+  // Relationship
+  fragrances  fragrances[]
+
+  @@map("brands")
+}
+
+model fragrances {
+  id                    BigInt @id @default(autoincrement())
+  // brand_id BIGINT REFERENCES brands(id)
+  brand_id              BigInt
+  name                  String @db.Text
+  description           String? @db.Text
+  scent_family          String? @db.Text
+  top_notes             String? @db.Text
+  middle_notes          String? @db.Text
+  base_notes            String? @db.Text
+  image_url             String? @db.Text
+  created_at            DateTime @default(now()) @db.Timestamptz(6)
+
+  // Relationships
+  brand                 brands   @relation(fields: [brand_id], references: [id])
+  fragrance_decant_prices fragrance_decant_prices[]
+  cart_items            cart_items[]
+  order_items           order_items[]
+
+  @@map("fragrances")
+}
+
+model decant_sizes {
+  id          BigInt @id @default(autoincrement())
+  // size_ml INTEGER UNIQUE NOT NULL
+  size_ml     Int    @unique
+  label       String @db.Text
+
+  // Relationships
+  fragrance_decant_prices fragrance_decant_prices[]
+  cart_items              cart_items[]
+  order_items             order_items[]
+
+  @@map("decant_sizes")
+}
+
+model fragrance_decant_prices {
+  id             BigInt @id @default(autoincrement())
+  fragrance_id   BigInt
+  decant_size_id BigInt
+  // price DOUBLE PRECISION NOT NULL
+  price          Float  @db.DoublePrecision
+
+  // Relationships
+  fragrance      fragrances   @relation(fields: [fragrance_id], references: [id])
+  decant_size    decant_sizes @relation(fields: [decant_size_id], references: [id])
+
+  // UNIQUE(fragrance_id, decant_size_id)
+  @@unique([fragrance_id, decant_size_id])
+  @@map("fragrance_decant_prices")
+}
+
+// -----------------------------------------------------------
+// 3. E-commerce Models
+// -----------------------------------------------------------
+
+model cart_items {
+  id             BigInt @id @default(autoincrement())
+  user_id        BigInt
+  fragrance_id   BigInt
+  decant_size_id BigInt
+  // quantity INTEGER NOT NULL DEFAULT 1
+  quantity       Int    @default(1)
+  created_at     DateTime @default(now()) @db.Timestamptz(6)
+
+  // Relationships
+  user           users        @relation(fields: [user_id], references: [id])
+  fragrance      fragrances   @relation(fields: [fragrance_id], references: [id])
+  decant_size    decant_sizes @relation(fields: [decant_size_id], references: [id])
+
+  // UNIQUE(user_id, fragrance_id, decant_size_id)
+  @@unique([user_id, fragrance_id, decant_size_id])
+  @@map("cart_items")
+}
+
+model orders {
+  id            BigInt   @id @default(autoincrement())
+  user_id       BigInt
+  // total_amount DOUBLE PRECISION NOT NULL
+  total_amount  Float    @db.DoublePrecision
+  // status TEXT DEFAULT 'pending'
+  status        String   @default("pending") @db.Text
+  created_at    DateTime @default(now()) @db.Timestamptz(6)
+  updated_at    DateTime @default(now()) @updatedAt @db.Timestamptz(6)
+
+  // Relationships
+  user          users        @relation(fields: [user_id], references: [id])
+  order_items   order_items[]
+
+  @@map("orders")
+}
+
+model order_items {
+  id             BigInt @id @default(autoincrement())
+  order_id       BigInt
+  fragrance_id   BigInt
+  decant_size_id BigInt
+  quantity       Int
+  // price_per_item DOUBLE PRECISION NOT NULL
+  price_per_item Float  @db.DoublePrecision
+
+  // Relationships
+  order          orders       @relation(fields: [order_id], references: [id])
+  fragrance      fragrances   @relation(fields: [fragrance_id], references: [id])
+  decant_size    decant_sizes @relation(fields: [decant_size_id], references: [id])
+
+  @@map("order_items")
+}

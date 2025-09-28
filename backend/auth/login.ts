@@ -1,5 +1,5 @@
 import { api, APIError } from "encore.dev/api";
-import db from "../db";
+import db from "../prisma/database";
 
 export interface LoginRequest {
   email: string;
