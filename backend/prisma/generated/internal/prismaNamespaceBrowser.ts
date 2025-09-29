@@ -26,7 +26,11 @@ export const ModelName = {
   fragrance_decant_prices: 'fragrance_decant_prices',
   cart_items: 'cart_items',
   orders: 'orders',
-  order_items: 'order_items'
+  order_items: 'order_items',
+  guest_orders: 'guest_orders',
+  guest_order_items: 'guest_order_items',
+  cart_sessions: 'cart_sessions',
+  guest_cart_items: 'guest_cart_items'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -48,7 +52,14 @@ export const UsersScalarFieldEnum = {
   id: 'id',
   email: 'email',
   name: 'name',
-  created_at: 'created_at'
+  created_at: 'created_at',
+  address_line1: 'address_line1',
+  address_line2: 'address_line2',
+  city: 'city',
+  state_province: 'state_province',
+  postal_code: 'postal_code',
+  country: 'country',
+  phone: 'phone'
 } as const
 
 export type UsersScalarFieldEnum = (typeof UsersScalarFieldEnum)[keyof typeof UsersScalarFieldEnum]
@@ -133,6 +144,62 @@ export const Order_itemsScalarFieldEnum = {
 } as const
 
 export type Order_itemsScalarFieldEnum = (typeof Order_itemsScalarFieldEnum)[keyof typeof Order_itemsScalarFieldEnum]
+
+
+export const Guest_ordersScalarFieldEnum = {
+  id: 'id',
+  session_id: 'session_id',
+  email: 'email',
+  address_line1: 'address_line1',
+  address_line2: 'address_line2',
+  city: 'city',
+  state_province: 'state_province',
+  postal_code: 'postal_code',
+  country: 'country',
+  phone: 'phone',
+  total_amount: 'total_amount',
+  status: 'status',
+  save_details_for_account: 'save_details_for_account',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type Guest_ordersScalarFieldEnum = (typeof Guest_ordersScalarFieldEnum)[keyof typeof Guest_ordersScalarFieldEnum]
+
+
+export const Guest_order_itemsScalarFieldEnum = {
+  id: 'id',
+  guest_order_id: 'guest_order_id',
+  fragrance_id: 'fragrance_id',
+  decant_size_id: 'decant_size_id',
+  quantity: 'quantity',
+  price_per_item: 'price_per_item'
+} as const
+
+export type Guest_order_itemsScalarFieldEnum = (typeof Guest_order_itemsScalarFieldEnum)[keyof typeof Guest_order_itemsScalarFieldEnum]
+
+
+export const Cart_sessionsScalarFieldEnum = {
+  id: 'id',
+  session_id: 'session_id',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type Cart_sessionsScalarFieldEnum = (typeof Cart_sessionsScalarFieldEnum)[keyof typeof Cart_sessionsScalarFieldEnum]
+
+
+export const Guest_cart_itemsScalarFieldEnum = {
+  id: 'id',
+  session_id: 'session_id',
+  cart_session_id: 'cart_session_id',
+  fragrance_id: 'fragrance_id',
+  decant_size_id: 'decant_size_id',
+  quantity: 'quantity',
+  created_at: 'created_at'
+} as const
+
+export type Guest_cart_itemsScalarFieldEnum = (typeof Guest_cart_itemsScalarFieldEnum)[keyof typeof Guest_cart_itemsScalarFieldEnum]
 
 
 export const SortOrder = {

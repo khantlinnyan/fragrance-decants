@@ -263,6 +263,8 @@ export type fragrancesWhereInput = {
   fragrance_decant_prices?: Prisma.Fragrance_decant_pricesListRelationFilter
   cart_items?: Prisma.Cart_itemsListRelationFilter
   order_items?: Prisma.Order_itemsListRelationFilter
+  guest_order_items?: Prisma.Guest_order_itemsListRelationFilter
+  guest_cart_items?: Prisma.Guest_cart_itemsListRelationFilter
 }
 
 export type fragrancesOrderByWithRelationInput = {
@@ -280,6 +282,8 @@ export type fragrancesOrderByWithRelationInput = {
   fragrance_decant_prices?: Prisma.fragrance_decant_pricesOrderByRelationAggregateInput
   cart_items?: Prisma.cart_itemsOrderByRelationAggregateInput
   order_items?: Prisma.order_itemsOrderByRelationAggregateInput
+  guest_order_items?: Prisma.guest_order_itemsOrderByRelationAggregateInput
+  guest_cart_items?: Prisma.guest_cart_itemsOrderByRelationAggregateInput
 }
 
 export type fragrancesWhereUniqueInput = Prisma.AtLeast<{
@@ -300,6 +304,8 @@ export type fragrancesWhereUniqueInput = Prisma.AtLeast<{
   fragrance_decant_prices?: Prisma.Fragrance_decant_pricesListRelationFilter
   cart_items?: Prisma.Cart_itemsListRelationFilter
   order_items?: Prisma.Order_itemsListRelationFilter
+  guest_order_items?: Prisma.Guest_order_itemsListRelationFilter
+  guest_cart_items?: Prisma.Guest_cart_itemsListRelationFilter
 }, "id">
 
 export type fragrancesOrderByWithAggregationInput = {
@@ -350,6 +356,8 @@ export type fragrancesCreateInput = {
   fragrance_decant_prices?: Prisma.fragrance_decant_pricesCreateNestedManyWithoutFragranceInput
   cart_items?: Prisma.cart_itemsCreateNestedManyWithoutFragranceInput
   order_items?: Prisma.order_itemsCreateNestedManyWithoutFragranceInput
+  guest_order_items?: Prisma.guest_order_itemsCreateNestedManyWithoutFragranceInput
+  guest_cart_items?: Prisma.guest_cart_itemsCreateNestedManyWithoutFragranceInput
 }
 
 export type fragrancesUncheckedCreateInput = {
@@ -366,6 +374,8 @@ export type fragrancesUncheckedCreateInput = {
   fragrance_decant_prices?: Prisma.fragrance_decant_pricesUncheckedCreateNestedManyWithoutFragranceInput
   cart_items?: Prisma.cart_itemsUncheckedCreateNestedManyWithoutFragranceInput
   order_items?: Prisma.order_itemsUncheckedCreateNestedManyWithoutFragranceInput
+  guest_order_items?: Prisma.guest_order_itemsUncheckedCreateNestedManyWithoutFragranceInput
+  guest_cart_items?: Prisma.guest_cart_itemsUncheckedCreateNestedManyWithoutFragranceInput
 }
 
 export type fragrancesUpdateInput = {
@@ -382,6 +392,8 @@ export type fragrancesUpdateInput = {
   fragrance_decant_prices?: Prisma.fragrance_decant_pricesUpdateManyWithoutFragranceNestedInput
   cart_items?: Prisma.cart_itemsUpdateManyWithoutFragranceNestedInput
   order_items?: Prisma.order_itemsUpdateManyWithoutFragranceNestedInput
+  guest_order_items?: Prisma.guest_order_itemsUpdateManyWithoutFragranceNestedInput
+  guest_cart_items?: Prisma.guest_cart_itemsUpdateManyWithoutFragranceNestedInput
 }
 
 export type fragrancesUncheckedUpdateInput = {
@@ -398,6 +410,8 @@ export type fragrancesUncheckedUpdateInput = {
   fragrance_decant_prices?: Prisma.fragrance_decant_pricesUncheckedUpdateManyWithoutFragranceNestedInput
   cart_items?: Prisma.cart_itemsUncheckedUpdateManyWithoutFragranceNestedInput
   order_items?: Prisma.order_itemsUncheckedUpdateManyWithoutFragranceNestedInput
+  guest_order_items?: Prisma.guest_order_itemsUncheckedUpdateManyWithoutFragranceNestedInput
+  guest_cart_items?: Prisma.guest_cart_itemsUncheckedUpdateManyWithoutFragranceNestedInput
 }
 
 export type fragrancesCreateManyInput = {
@@ -586,6 +600,34 @@ export type fragrancesUpdateOneRequiredWithoutOrder_itemsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.fragrancesUpdateToOneWithWhereWithoutOrder_itemsInput, Prisma.fragrancesUpdateWithoutOrder_itemsInput>, Prisma.fragrancesUncheckedUpdateWithoutOrder_itemsInput>
 }
 
+export type fragrancesCreateNestedOneWithoutGuest_order_itemsInput = {
+  create?: Prisma.XOR<Prisma.fragrancesCreateWithoutGuest_order_itemsInput, Prisma.fragrancesUncheckedCreateWithoutGuest_order_itemsInput>
+  connectOrCreate?: Prisma.fragrancesCreateOrConnectWithoutGuest_order_itemsInput
+  connect?: Prisma.fragrancesWhereUniqueInput
+}
+
+export type fragrancesUpdateOneRequiredWithoutGuest_order_itemsNestedInput = {
+  create?: Prisma.XOR<Prisma.fragrancesCreateWithoutGuest_order_itemsInput, Prisma.fragrancesUncheckedCreateWithoutGuest_order_itemsInput>
+  connectOrCreate?: Prisma.fragrancesCreateOrConnectWithoutGuest_order_itemsInput
+  upsert?: Prisma.fragrancesUpsertWithoutGuest_order_itemsInput
+  connect?: Prisma.fragrancesWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.fragrancesUpdateToOneWithWhereWithoutGuest_order_itemsInput, Prisma.fragrancesUpdateWithoutGuest_order_itemsInput>, Prisma.fragrancesUncheckedUpdateWithoutGuest_order_itemsInput>
+}
+
+export type fragrancesCreateNestedOneWithoutGuest_cart_itemsInput = {
+  create?: Prisma.XOR<Prisma.fragrancesCreateWithoutGuest_cart_itemsInput, Prisma.fragrancesUncheckedCreateWithoutGuest_cart_itemsInput>
+  connectOrCreate?: Prisma.fragrancesCreateOrConnectWithoutGuest_cart_itemsInput
+  connect?: Prisma.fragrancesWhereUniqueInput
+}
+
+export type fragrancesUpdateOneRequiredWithoutGuest_cart_itemsNestedInput = {
+  create?: Prisma.XOR<Prisma.fragrancesCreateWithoutGuest_cart_itemsInput, Prisma.fragrancesUncheckedCreateWithoutGuest_cart_itemsInput>
+  connectOrCreate?: Prisma.fragrancesCreateOrConnectWithoutGuest_cart_itemsInput
+  upsert?: Prisma.fragrancesUpsertWithoutGuest_cart_itemsInput
+  connect?: Prisma.fragrancesWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.fragrancesUpdateToOneWithWhereWithoutGuest_cart_itemsInput, Prisma.fragrancesUpdateWithoutGuest_cart_itemsInput>, Prisma.fragrancesUncheckedUpdateWithoutGuest_cart_itemsInput>
+}
+
 export type fragrancesCreateWithoutBrandInput = {
   id?: bigint | number
   name: string
@@ -599,6 +641,8 @@ export type fragrancesCreateWithoutBrandInput = {
   fragrance_decant_prices?: Prisma.fragrance_decant_pricesCreateNestedManyWithoutFragranceInput
   cart_items?: Prisma.cart_itemsCreateNestedManyWithoutFragranceInput
   order_items?: Prisma.order_itemsCreateNestedManyWithoutFragranceInput
+  guest_order_items?: Prisma.guest_order_itemsCreateNestedManyWithoutFragranceInput
+  guest_cart_items?: Prisma.guest_cart_itemsCreateNestedManyWithoutFragranceInput
 }
 
 export type fragrancesUncheckedCreateWithoutBrandInput = {
@@ -614,6 +658,8 @@ export type fragrancesUncheckedCreateWithoutBrandInput = {
   fragrance_decant_prices?: Prisma.fragrance_decant_pricesUncheckedCreateNestedManyWithoutFragranceInput
   cart_items?: Prisma.cart_itemsUncheckedCreateNestedManyWithoutFragranceInput
   order_items?: Prisma.order_itemsUncheckedCreateNestedManyWithoutFragranceInput
+  guest_order_items?: Prisma.guest_order_itemsUncheckedCreateNestedManyWithoutFragranceInput
+  guest_cart_items?: Prisma.guest_cart_itemsUncheckedCreateNestedManyWithoutFragranceInput
 }
 
 export type fragrancesCreateOrConnectWithoutBrandInput = {
@@ -671,6 +717,8 @@ export type fragrancesCreateWithoutFragrance_decant_pricesInput = {
   brand: Prisma.brandsCreateNestedOneWithoutFragrancesInput
   cart_items?: Prisma.cart_itemsCreateNestedManyWithoutFragranceInput
   order_items?: Prisma.order_itemsCreateNestedManyWithoutFragranceInput
+  guest_order_items?: Prisma.guest_order_itemsCreateNestedManyWithoutFragranceInput
+  guest_cart_items?: Prisma.guest_cart_itemsCreateNestedManyWithoutFragranceInput
 }
 
 export type fragrancesUncheckedCreateWithoutFragrance_decant_pricesInput = {
@@ -686,6 +734,8 @@ export type fragrancesUncheckedCreateWithoutFragrance_decant_pricesInput = {
   created_at?: Date | string
   cart_items?: Prisma.cart_itemsUncheckedCreateNestedManyWithoutFragranceInput
   order_items?: Prisma.order_itemsUncheckedCreateNestedManyWithoutFragranceInput
+  guest_order_items?: Prisma.guest_order_itemsUncheckedCreateNestedManyWithoutFragranceInput
+  guest_cart_items?: Prisma.guest_cart_itemsUncheckedCreateNestedManyWithoutFragranceInput
 }
 
 export type fragrancesCreateOrConnectWithoutFragrance_decant_pricesInput = {
@@ -717,6 +767,8 @@ export type fragrancesUpdateWithoutFragrance_decant_pricesInput = {
   brand?: Prisma.brandsUpdateOneRequiredWithoutFragrancesNestedInput
   cart_items?: Prisma.cart_itemsUpdateManyWithoutFragranceNestedInput
   order_items?: Prisma.order_itemsUpdateManyWithoutFragranceNestedInput
+  guest_order_items?: Prisma.guest_order_itemsUpdateManyWithoutFragranceNestedInput
+  guest_cart_items?: Prisma.guest_cart_itemsUpdateManyWithoutFragranceNestedInput
 }
 
 export type fragrancesUncheckedUpdateWithoutFragrance_decant_pricesInput = {
@@ -732,6 +784,8 @@ export type fragrancesUncheckedUpdateWithoutFragrance_decant_pricesInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   cart_items?: Prisma.cart_itemsUncheckedUpdateManyWithoutFragranceNestedInput
   order_items?: Prisma.order_itemsUncheckedUpdateManyWithoutFragranceNestedInput
+  guest_order_items?: Prisma.guest_order_itemsUncheckedUpdateManyWithoutFragranceNestedInput
+  guest_cart_items?: Prisma.guest_cart_itemsUncheckedUpdateManyWithoutFragranceNestedInput
 }
 
 export type fragrancesCreateWithoutCart_itemsInput = {
@@ -747,6 +801,8 @@ export type fragrancesCreateWithoutCart_itemsInput = {
   brand: Prisma.brandsCreateNestedOneWithoutFragrancesInput
   fragrance_decant_prices?: Prisma.fragrance_decant_pricesCreateNestedManyWithoutFragranceInput
   order_items?: Prisma.order_itemsCreateNestedManyWithoutFragranceInput
+  guest_order_items?: Prisma.guest_order_itemsCreateNestedManyWithoutFragranceInput
+  guest_cart_items?: Prisma.guest_cart_itemsCreateNestedManyWithoutFragranceInput
 }
 
 export type fragrancesUncheckedCreateWithoutCart_itemsInput = {
@@ -762,6 +818,8 @@ export type fragrancesUncheckedCreateWithoutCart_itemsInput = {
   created_at?: Date | string
   fragrance_decant_prices?: Prisma.fragrance_decant_pricesUncheckedCreateNestedManyWithoutFragranceInput
   order_items?: Prisma.order_itemsUncheckedCreateNestedManyWithoutFragranceInput
+  guest_order_items?: Prisma.guest_order_itemsUncheckedCreateNestedManyWithoutFragranceInput
+  guest_cart_items?: Prisma.guest_cart_itemsUncheckedCreateNestedManyWithoutFragranceInput
 }
 
 export type fragrancesCreateOrConnectWithoutCart_itemsInput = {
@@ -793,6 +851,8 @@ export type fragrancesUpdateWithoutCart_itemsInput = {
   brand?: Prisma.brandsUpdateOneRequiredWithoutFragrancesNestedInput
   fragrance_decant_prices?: Prisma.fragrance_decant_pricesUpdateManyWithoutFragranceNestedInput
   order_items?: Prisma.order_itemsUpdateManyWithoutFragranceNestedInput
+  guest_order_items?: Prisma.guest_order_itemsUpdateManyWithoutFragranceNestedInput
+  guest_cart_items?: Prisma.guest_cart_itemsUpdateManyWithoutFragranceNestedInput
 }
 
 export type fragrancesUncheckedUpdateWithoutCart_itemsInput = {
@@ -808,6 +868,8 @@ export type fragrancesUncheckedUpdateWithoutCart_itemsInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fragrance_decant_prices?: Prisma.fragrance_decant_pricesUncheckedUpdateManyWithoutFragranceNestedInput
   order_items?: Prisma.order_itemsUncheckedUpdateManyWithoutFragranceNestedInput
+  guest_order_items?: Prisma.guest_order_itemsUncheckedUpdateManyWithoutFragranceNestedInput
+  guest_cart_items?: Prisma.guest_cart_itemsUncheckedUpdateManyWithoutFragranceNestedInput
 }
 
 export type fragrancesCreateWithoutOrder_itemsInput = {
@@ -823,6 +885,8 @@ export type fragrancesCreateWithoutOrder_itemsInput = {
   brand: Prisma.brandsCreateNestedOneWithoutFragrancesInput
   fragrance_decant_prices?: Prisma.fragrance_decant_pricesCreateNestedManyWithoutFragranceInput
   cart_items?: Prisma.cart_itemsCreateNestedManyWithoutFragranceInput
+  guest_order_items?: Prisma.guest_order_itemsCreateNestedManyWithoutFragranceInput
+  guest_cart_items?: Prisma.guest_cart_itemsCreateNestedManyWithoutFragranceInput
 }
 
 export type fragrancesUncheckedCreateWithoutOrder_itemsInput = {
@@ -838,6 +902,8 @@ export type fragrancesUncheckedCreateWithoutOrder_itemsInput = {
   created_at?: Date | string
   fragrance_decant_prices?: Prisma.fragrance_decant_pricesUncheckedCreateNestedManyWithoutFragranceInput
   cart_items?: Prisma.cart_itemsUncheckedCreateNestedManyWithoutFragranceInput
+  guest_order_items?: Prisma.guest_order_itemsUncheckedCreateNestedManyWithoutFragranceInput
+  guest_cart_items?: Prisma.guest_cart_itemsUncheckedCreateNestedManyWithoutFragranceInput
 }
 
 export type fragrancesCreateOrConnectWithoutOrder_itemsInput = {
@@ -869,6 +935,8 @@ export type fragrancesUpdateWithoutOrder_itemsInput = {
   brand?: Prisma.brandsUpdateOneRequiredWithoutFragrancesNestedInput
   fragrance_decant_prices?: Prisma.fragrance_decant_pricesUpdateManyWithoutFragranceNestedInput
   cart_items?: Prisma.cart_itemsUpdateManyWithoutFragranceNestedInput
+  guest_order_items?: Prisma.guest_order_itemsUpdateManyWithoutFragranceNestedInput
+  guest_cart_items?: Prisma.guest_cart_itemsUpdateManyWithoutFragranceNestedInput
 }
 
 export type fragrancesUncheckedUpdateWithoutOrder_itemsInput = {
@@ -884,6 +952,176 @@ export type fragrancesUncheckedUpdateWithoutOrder_itemsInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fragrance_decant_prices?: Prisma.fragrance_decant_pricesUncheckedUpdateManyWithoutFragranceNestedInput
   cart_items?: Prisma.cart_itemsUncheckedUpdateManyWithoutFragranceNestedInput
+  guest_order_items?: Prisma.guest_order_itemsUncheckedUpdateManyWithoutFragranceNestedInput
+  guest_cart_items?: Prisma.guest_cart_itemsUncheckedUpdateManyWithoutFragranceNestedInput
+}
+
+export type fragrancesCreateWithoutGuest_order_itemsInput = {
+  id?: bigint | number
+  name: string
+  description?: string | null
+  scent_family?: string | null
+  top_notes?: string | null
+  middle_notes?: string | null
+  base_notes?: string | null
+  image_url?: string | null
+  created_at?: Date | string
+  brand: Prisma.brandsCreateNestedOneWithoutFragrancesInput
+  fragrance_decant_prices?: Prisma.fragrance_decant_pricesCreateNestedManyWithoutFragranceInput
+  cart_items?: Prisma.cart_itemsCreateNestedManyWithoutFragranceInput
+  order_items?: Prisma.order_itemsCreateNestedManyWithoutFragranceInput
+  guest_cart_items?: Prisma.guest_cart_itemsCreateNestedManyWithoutFragranceInput
+}
+
+export type fragrancesUncheckedCreateWithoutGuest_order_itemsInput = {
+  id?: bigint | number
+  brand_id: bigint | number
+  name: string
+  description?: string | null
+  scent_family?: string | null
+  top_notes?: string | null
+  middle_notes?: string | null
+  base_notes?: string | null
+  image_url?: string | null
+  created_at?: Date | string
+  fragrance_decant_prices?: Prisma.fragrance_decant_pricesUncheckedCreateNestedManyWithoutFragranceInput
+  cart_items?: Prisma.cart_itemsUncheckedCreateNestedManyWithoutFragranceInput
+  order_items?: Prisma.order_itemsUncheckedCreateNestedManyWithoutFragranceInput
+  guest_cart_items?: Prisma.guest_cart_itemsUncheckedCreateNestedManyWithoutFragranceInput
+}
+
+export type fragrancesCreateOrConnectWithoutGuest_order_itemsInput = {
+  where: Prisma.fragrancesWhereUniqueInput
+  create: Prisma.XOR<Prisma.fragrancesCreateWithoutGuest_order_itemsInput, Prisma.fragrancesUncheckedCreateWithoutGuest_order_itemsInput>
+}
+
+export type fragrancesUpsertWithoutGuest_order_itemsInput = {
+  update: Prisma.XOR<Prisma.fragrancesUpdateWithoutGuest_order_itemsInput, Prisma.fragrancesUncheckedUpdateWithoutGuest_order_itemsInput>
+  create: Prisma.XOR<Prisma.fragrancesCreateWithoutGuest_order_itemsInput, Prisma.fragrancesUncheckedCreateWithoutGuest_order_itemsInput>
+  where?: Prisma.fragrancesWhereInput
+}
+
+export type fragrancesUpdateToOneWithWhereWithoutGuest_order_itemsInput = {
+  where?: Prisma.fragrancesWhereInput
+  data: Prisma.XOR<Prisma.fragrancesUpdateWithoutGuest_order_itemsInput, Prisma.fragrancesUncheckedUpdateWithoutGuest_order_itemsInput>
+}
+
+export type fragrancesUpdateWithoutGuest_order_itemsInput = {
+  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scent_family?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  top_notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  middle_notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  base_notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  image_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  brand?: Prisma.brandsUpdateOneRequiredWithoutFragrancesNestedInput
+  fragrance_decant_prices?: Prisma.fragrance_decant_pricesUpdateManyWithoutFragranceNestedInput
+  cart_items?: Prisma.cart_itemsUpdateManyWithoutFragranceNestedInput
+  order_items?: Prisma.order_itemsUpdateManyWithoutFragranceNestedInput
+  guest_cart_items?: Prisma.guest_cart_itemsUpdateManyWithoutFragranceNestedInput
+}
+
+export type fragrancesUncheckedUpdateWithoutGuest_order_itemsInput = {
+  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  brand_id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scent_family?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  top_notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  middle_notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  base_notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  image_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fragrance_decant_prices?: Prisma.fragrance_decant_pricesUncheckedUpdateManyWithoutFragranceNestedInput
+  cart_items?: Prisma.cart_itemsUncheckedUpdateManyWithoutFragranceNestedInput
+  order_items?: Prisma.order_itemsUncheckedUpdateManyWithoutFragranceNestedInput
+  guest_cart_items?: Prisma.guest_cart_itemsUncheckedUpdateManyWithoutFragranceNestedInput
+}
+
+export type fragrancesCreateWithoutGuest_cart_itemsInput = {
+  id?: bigint | number
+  name: string
+  description?: string | null
+  scent_family?: string | null
+  top_notes?: string | null
+  middle_notes?: string | null
+  base_notes?: string | null
+  image_url?: string | null
+  created_at?: Date | string
+  brand: Prisma.brandsCreateNestedOneWithoutFragrancesInput
+  fragrance_decant_prices?: Prisma.fragrance_decant_pricesCreateNestedManyWithoutFragranceInput
+  cart_items?: Prisma.cart_itemsCreateNestedManyWithoutFragranceInput
+  order_items?: Prisma.order_itemsCreateNestedManyWithoutFragranceInput
+  guest_order_items?: Prisma.guest_order_itemsCreateNestedManyWithoutFragranceInput
+}
+
+export type fragrancesUncheckedCreateWithoutGuest_cart_itemsInput = {
+  id?: bigint | number
+  brand_id: bigint | number
+  name: string
+  description?: string | null
+  scent_family?: string | null
+  top_notes?: string | null
+  middle_notes?: string | null
+  base_notes?: string | null
+  image_url?: string | null
+  created_at?: Date | string
+  fragrance_decant_prices?: Prisma.fragrance_decant_pricesUncheckedCreateNestedManyWithoutFragranceInput
+  cart_items?: Prisma.cart_itemsUncheckedCreateNestedManyWithoutFragranceInput
+  order_items?: Prisma.order_itemsUncheckedCreateNestedManyWithoutFragranceInput
+  guest_order_items?: Prisma.guest_order_itemsUncheckedCreateNestedManyWithoutFragranceInput
+}
+
+export type fragrancesCreateOrConnectWithoutGuest_cart_itemsInput = {
+  where: Prisma.fragrancesWhereUniqueInput
+  create: Prisma.XOR<Prisma.fragrancesCreateWithoutGuest_cart_itemsInput, Prisma.fragrancesUncheckedCreateWithoutGuest_cart_itemsInput>
+}
+
+export type fragrancesUpsertWithoutGuest_cart_itemsInput = {
+  update: Prisma.XOR<Prisma.fragrancesUpdateWithoutGuest_cart_itemsInput, Prisma.fragrancesUncheckedUpdateWithoutGuest_cart_itemsInput>
+  create: Prisma.XOR<Prisma.fragrancesCreateWithoutGuest_cart_itemsInput, Prisma.fragrancesUncheckedCreateWithoutGuest_cart_itemsInput>
+  where?: Prisma.fragrancesWhereInput
+}
+
+export type fragrancesUpdateToOneWithWhereWithoutGuest_cart_itemsInput = {
+  where?: Prisma.fragrancesWhereInput
+  data: Prisma.XOR<Prisma.fragrancesUpdateWithoutGuest_cart_itemsInput, Prisma.fragrancesUncheckedUpdateWithoutGuest_cart_itemsInput>
+}
+
+export type fragrancesUpdateWithoutGuest_cart_itemsInput = {
+  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scent_family?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  top_notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  middle_notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  base_notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  image_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  brand?: Prisma.brandsUpdateOneRequiredWithoutFragrancesNestedInput
+  fragrance_decant_prices?: Prisma.fragrance_decant_pricesUpdateManyWithoutFragranceNestedInput
+  cart_items?: Prisma.cart_itemsUpdateManyWithoutFragranceNestedInput
+  order_items?: Prisma.order_itemsUpdateManyWithoutFragranceNestedInput
+  guest_order_items?: Prisma.guest_order_itemsUpdateManyWithoutFragranceNestedInput
+}
+
+export type fragrancesUncheckedUpdateWithoutGuest_cart_itemsInput = {
+  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  brand_id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scent_family?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  top_notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  middle_notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  base_notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  image_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fragrance_decant_prices?: Prisma.fragrance_decant_pricesUncheckedUpdateManyWithoutFragranceNestedInput
+  cart_items?: Prisma.cart_itemsUncheckedUpdateManyWithoutFragranceNestedInput
+  order_items?: Prisma.order_itemsUncheckedUpdateManyWithoutFragranceNestedInput
+  guest_order_items?: Prisma.guest_order_itemsUncheckedUpdateManyWithoutFragranceNestedInput
 }
 
 export type fragrancesCreateManyBrandInput = {
@@ -911,6 +1149,8 @@ export type fragrancesUpdateWithoutBrandInput = {
   fragrance_decant_prices?: Prisma.fragrance_decant_pricesUpdateManyWithoutFragranceNestedInput
   cart_items?: Prisma.cart_itemsUpdateManyWithoutFragranceNestedInput
   order_items?: Prisma.order_itemsUpdateManyWithoutFragranceNestedInput
+  guest_order_items?: Prisma.guest_order_itemsUpdateManyWithoutFragranceNestedInput
+  guest_cart_items?: Prisma.guest_cart_itemsUpdateManyWithoutFragranceNestedInput
 }
 
 export type fragrancesUncheckedUpdateWithoutBrandInput = {
@@ -926,6 +1166,8 @@ export type fragrancesUncheckedUpdateWithoutBrandInput = {
   fragrance_decant_prices?: Prisma.fragrance_decant_pricesUncheckedUpdateManyWithoutFragranceNestedInput
   cart_items?: Prisma.cart_itemsUncheckedUpdateManyWithoutFragranceNestedInput
   order_items?: Prisma.order_itemsUncheckedUpdateManyWithoutFragranceNestedInput
+  guest_order_items?: Prisma.guest_order_itemsUncheckedUpdateManyWithoutFragranceNestedInput
+  guest_cart_items?: Prisma.guest_cart_itemsUncheckedUpdateManyWithoutFragranceNestedInput
 }
 
 export type fragrancesUncheckedUpdateManyWithoutBrandInput = {
@@ -949,12 +1191,16 @@ export type FragrancesCountOutputType = {
   fragrance_decant_prices: number
   cart_items: number
   order_items: number
+  guest_order_items: number
+  guest_cart_items: number
 }
 
 export type FragrancesCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   fragrance_decant_prices?: boolean | FragrancesCountOutputTypeCountFragrance_decant_pricesArgs
   cart_items?: boolean | FragrancesCountOutputTypeCountCart_itemsArgs
   order_items?: boolean | FragrancesCountOutputTypeCountOrder_itemsArgs
+  guest_order_items?: boolean | FragrancesCountOutputTypeCountGuest_order_itemsArgs
+  guest_cart_items?: boolean | FragrancesCountOutputTypeCountGuest_cart_itemsArgs
 }
 
 /**
@@ -988,6 +1234,20 @@ export type FragrancesCountOutputTypeCountOrder_itemsArgs<ExtArgs extends runtim
   where?: Prisma.order_itemsWhereInput
 }
 
+/**
+ * FragrancesCountOutputType without action
+ */
+export type FragrancesCountOutputTypeCountGuest_order_itemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.guest_order_itemsWhereInput
+}
+
+/**
+ * FragrancesCountOutputType without action
+ */
+export type FragrancesCountOutputTypeCountGuest_cart_itemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.guest_cart_itemsWhereInput
+}
+
 
 export type fragrancesSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1004,6 +1264,8 @@ export type fragrancesSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   fragrance_decant_prices?: boolean | Prisma.fragrances$fragrance_decant_pricesArgs<ExtArgs>
   cart_items?: boolean | Prisma.fragrances$cart_itemsArgs<ExtArgs>
   order_items?: boolean | Prisma.fragrances$order_itemsArgs<ExtArgs>
+  guest_order_items?: boolean | Prisma.fragrances$guest_order_itemsArgs<ExtArgs>
+  guest_cart_items?: boolean | Prisma.fragrances$guest_cart_itemsArgs<ExtArgs>
   _count?: boolean | Prisma.FragrancesCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["fragrances"]>
 
@@ -1054,6 +1316,8 @@ export type fragrancesInclude<ExtArgs extends runtime.Types.Extensions.InternalA
   fragrance_decant_prices?: boolean | Prisma.fragrances$fragrance_decant_pricesArgs<ExtArgs>
   cart_items?: boolean | Prisma.fragrances$cart_itemsArgs<ExtArgs>
   order_items?: boolean | Prisma.fragrances$order_itemsArgs<ExtArgs>
+  guest_order_items?: boolean | Prisma.fragrances$guest_order_itemsArgs<ExtArgs>
+  guest_cart_items?: boolean | Prisma.fragrances$guest_cart_itemsArgs<ExtArgs>
   _count?: boolean | Prisma.FragrancesCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type fragrancesIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1070,6 +1334,8 @@ export type $fragrancesPayload<ExtArgs extends runtime.Types.Extensions.Internal
     fragrance_decant_prices: Prisma.$fragrance_decant_pricesPayload<ExtArgs>[]
     cart_items: Prisma.$cart_itemsPayload<ExtArgs>[]
     order_items: Prisma.$order_itemsPayload<ExtArgs>[]
+    guest_order_items: Prisma.$guest_order_itemsPayload<ExtArgs>[]
+    guest_cart_items: Prisma.$guest_cart_itemsPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: bigint
@@ -1480,6 +1746,8 @@ export interface Prisma__fragrancesClient<T, Null = never, ExtArgs extends runti
   fragrance_decant_prices<T extends Prisma.fragrances$fragrance_decant_pricesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.fragrances$fragrance_decant_pricesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$fragrance_decant_pricesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   cart_items<T extends Prisma.fragrances$cart_itemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.fragrances$cart_itemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$cart_itemsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   order_items<T extends Prisma.fragrances$order_itemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.fragrances$order_itemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$order_itemsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  guest_order_items<T extends Prisma.fragrances$guest_order_itemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.fragrances$guest_order_itemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$guest_order_itemsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  guest_cart_items<T extends Prisma.fragrances$guest_cart_itemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.fragrances$guest_cart_itemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$guest_cart_itemsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1984,6 +2252,54 @@ export type fragrances$order_itemsArgs<ExtArgs extends runtime.Types.Extensions.
   take?: number
   skip?: number
   distinct?: Prisma.Order_itemsScalarFieldEnum | Prisma.Order_itemsScalarFieldEnum[]
+}
+
+/**
+ * fragrances.guest_order_items
+ */
+export type fragrances$guest_order_itemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the guest_order_items
+   */
+  select?: Prisma.guest_order_itemsSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the guest_order_items
+   */
+  omit?: Prisma.guest_order_itemsOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.guest_order_itemsInclude<ExtArgs> | null
+  where?: Prisma.guest_order_itemsWhereInput
+  orderBy?: Prisma.guest_order_itemsOrderByWithRelationInput | Prisma.guest_order_itemsOrderByWithRelationInput[]
+  cursor?: Prisma.guest_order_itemsWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.Guest_order_itemsScalarFieldEnum | Prisma.Guest_order_itemsScalarFieldEnum[]
+}
+
+/**
+ * fragrances.guest_cart_items
+ */
+export type fragrances$guest_cart_itemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the guest_cart_items
+   */
+  select?: Prisma.guest_cart_itemsSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the guest_cart_items
+   */
+  omit?: Prisma.guest_cart_itemsOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.guest_cart_itemsInclude<ExtArgs> | null
+  where?: Prisma.guest_cart_itemsWhereInput
+  orderBy?: Prisma.guest_cart_itemsOrderByWithRelationInput | Prisma.guest_cart_itemsOrderByWithRelationInput[]
+  cursor?: Prisma.guest_cart_itemsWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.Guest_cart_itemsScalarFieldEnum | Prisma.Guest_cart_itemsScalarFieldEnum[]
 }
 
 /**

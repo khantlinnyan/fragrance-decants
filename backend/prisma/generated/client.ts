@@ -83,3 +83,23 @@ export type orders = Prisma.ordersModel
  * 
  */
 export type order_items = Prisma.order_itemsModel
+/**
+ * Model guest_orders
+ * 
+ */
+export type guest_orders = Prisma.guest_ordersModel
+/**
+ * Model guest_order_items
+ * 
+ */
+export type guest_order_items = Prisma.guest_order_itemsModel
+/**
+ * Model cart_sessions
+ * 
+ */
+export type cart_sessions = Prisma.cart_sessionsModel
+/**
+ * Model guest_cart_items
+ * 
+ */
+export type guest_cart_items = Prisma.guest_cart_itemsModel

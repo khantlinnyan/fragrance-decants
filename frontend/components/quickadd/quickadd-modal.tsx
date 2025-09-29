@@ -1,5 +1,5 @@
 // src/components/QuickAddModal.tsx
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { X, Plus, Minus, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -44,9 +44,9 @@ export function QuickAddModal({
   const [isAdding, setIsAdding] = useState(false);
 
   // Reset state when the modal opens/closes to ensure a clean slate for the next product
-  useState(() => {
+  useEffect(() => {
     if (isOpen) {
-      setSelectedSizeId(fragrance.prices[0]?.size_ml ?? null);
+      setSelectedSizeId(fragrance.prices[0]?.size_id ?? null);
       setQuantity(1);
     }
   }, [isOpen, fragrance.id]);
@@ -115,10 +115,10 @@ export function QuickAddModal({
             <div className="grid grid-cols-2 gap-2 max-h-[150px] overflow-y-auto pr-1">
               {fragrance.prices.map((price) => (
                 <button
-                  key={price.size_ml}
-                  onClick={() => setSelectedSizeId(price.size_ml)}
+                  key={price.size_id}
+                  onClick={() => setSelectedSizeId(price.size_id)}
                   className={`p-3 rounded-lg border transition-all text-left ${
-                    selectedSizeId === price.size_ml
+                    selectedSizeId === price.size_id
                       ? "border-black dark:border-white bg-neutral-100 dark:bg-neutral-900 text-black dark:text-white"
                       : "border-neutral-300 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 hover:border-neutral-500 dark:hover:border-neutral-500"
                   }`}

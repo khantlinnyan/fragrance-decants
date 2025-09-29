@@ -26,6 +26,7 @@ export interface Fragrance {
   base_notes: string;
   image_url: string;
   prices: Array<{
+    size_id: number;
     size_ml: number;
     label: string;
     price: number;

@@ -206,6 +206,8 @@ export type decant_sizesWhereInput = {
   fragrance_decant_prices?: Prisma.Fragrance_decant_pricesListRelationFilter
   cart_items?: Prisma.Cart_itemsListRelationFilter
   order_items?: Prisma.Order_itemsListRelationFilter
+  guest_order_items?: Prisma.Guest_order_itemsListRelationFilter
+  guest_cart_items?: Prisma.Guest_cart_itemsListRelationFilter
 }
 
 export type decant_sizesOrderByWithRelationInput = {
@@ -215,6 +217,8 @@ export type decant_sizesOrderByWithRelationInput = {
   fragrance_decant_prices?: Prisma.fragrance_decant_pricesOrderByRelationAggregateInput
   cart_items?: Prisma.cart_itemsOrderByRelationAggregateInput
   order_items?: Prisma.order_itemsOrderByRelationAggregateInput
+  guest_order_items?: Prisma.guest_order_itemsOrderByRelationAggregateInput
+  guest_cart_items?: Prisma.guest_cart_itemsOrderByRelationAggregateInput
 }
 
 export type decant_sizesWhereUniqueInput = Prisma.AtLeast<{
@@ -227,6 +231,8 @@ export type decant_sizesWhereUniqueInput = Prisma.AtLeast<{
   fragrance_decant_prices?: Prisma.Fragrance_decant_pricesListRelationFilter
   cart_items?: Prisma.Cart_itemsListRelationFilter
   order_items?: Prisma.Order_itemsListRelationFilter
+  guest_order_items?: Prisma.Guest_order_itemsListRelationFilter
+  guest_cart_items?: Prisma.Guest_cart_itemsListRelationFilter
 }, "id" | "size_ml">
 
 export type decant_sizesOrderByWithAggregationInput = {
@@ -256,6 +262,8 @@ export type decant_sizesCreateInput = {
   fragrance_decant_prices?: Prisma.fragrance_decant_pricesCreateNestedManyWithoutDecant_sizeInput
   cart_items?: Prisma.cart_itemsCreateNestedManyWithoutDecant_sizeInput
   order_items?: Prisma.order_itemsCreateNestedManyWithoutDecant_sizeInput
+  guest_order_items?: Prisma.guest_order_itemsCreateNestedManyWithoutDecant_sizeInput
+  guest_cart_items?: Prisma.guest_cart_itemsCreateNestedManyWithoutDecant_sizeInput
 }
 
 export type decant_sizesUncheckedCreateInput = {
@@ -265,6 +273,8 @@ export type decant_sizesUncheckedCreateInput = {
   fragrance_decant_prices?: Prisma.fragrance_decant_pricesUncheckedCreateNestedManyWithoutDecant_sizeInput
   cart_items?: Prisma.cart_itemsUncheckedCreateNestedManyWithoutDecant_sizeInput
   order_items?: Prisma.order_itemsUncheckedCreateNestedManyWithoutDecant_sizeInput
+  guest_order_items?: Prisma.guest_order_itemsUncheckedCreateNestedManyWithoutDecant_sizeInput
+  guest_cart_items?: Prisma.guest_cart_itemsUncheckedCreateNestedManyWithoutDecant_sizeInput
 }
 
 export type decant_sizesUpdateInput = {
@@ -274,6 +284,8 @@ export type decant_sizesUpdateInput = {
   fragrance_decant_prices?: Prisma.fragrance_decant_pricesUpdateManyWithoutDecant_sizeNestedInput
   cart_items?: Prisma.cart_itemsUpdateManyWithoutDecant_sizeNestedInput
   order_items?: Prisma.order_itemsUpdateManyWithoutDecant_sizeNestedInput
+  guest_order_items?: Prisma.guest_order_itemsUpdateManyWithoutDecant_sizeNestedInput
+  guest_cart_items?: Prisma.guest_cart_itemsUpdateManyWithoutDecant_sizeNestedInput
 }
 
 export type decant_sizesUncheckedUpdateInput = {
@@ -283,6 +295,8 @@ export type decant_sizesUncheckedUpdateInput = {
   fragrance_decant_prices?: Prisma.fragrance_decant_pricesUncheckedUpdateManyWithoutDecant_sizeNestedInput
   cart_items?: Prisma.cart_itemsUncheckedUpdateManyWithoutDecant_sizeNestedInput
   order_items?: Prisma.order_itemsUncheckedUpdateManyWithoutDecant_sizeNestedInput
+  guest_order_items?: Prisma.guest_order_itemsUncheckedUpdateManyWithoutDecant_sizeNestedInput
+  guest_cart_items?: Prisma.guest_cart_itemsUncheckedUpdateManyWithoutDecant_sizeNestedInput
 }
 
 export type decant_sizesCreateManyInput = {
@@ -386,12 +400,42 @@ export type decant_sizesUpdateOneRequiredWithoutOrder_itemsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.decant_sizesUpdateToOneWithWhereWithoutOrder_itemsInput, Prisma.decant_sizesUpdateWithoutOrder_itemsInput>, Prisma.decant_sizesUncheckedUpdateWithoutOrder_itemsInput>
 }
 
+export type decant_sizesCreateNestedOneWithoutGuest_order_itemsInput = {
+  create?: Prisma.XOR<Prisma.decant_sizesCreateWithoutGuest_order_itemsInput, Prisma.decant_sizesUncheckedCreateWithoutGuest_order_itemsInput>
+  connectOrCreate?: Prisma.decant_sizesCreateOrConnectWithoutGuest_order_itemsInput
+  connect?: Prisma.decant_sizesWhereUniqueInput
+}
+
+export type decant_sizesUpdateOneRequiredWithoutGuest_order_itemsNestedInput = {
+  create?: Prisma.XOR<Prisma.decant_sizesCreateWithoutGuest_order_itemsInput, Prisma.decant_sizesUncheckedCreateWithoutGuest_order_itemsInput>
+  connectOrCreate?: Prisma.decant_sizesCreateOrConnectWithoutGuest_order_itemsInput
+  upsert?: Prisma.decant_sizesUpsertWithoutGuest_order_itemsInput
+  connect?: Prisma.decant_sizesWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.decant_sizesUpdateToOneWithWhereWithoutGuest_order_itemsInput, Prisma.decant_sizesUpdateWithoutGuest_order_itemsInput>, Prisma.decant_sizesUncheckedUpdateWithoutGuest_order_itemsInput>
+}
+
+export type decant_sizesCreateNestedOneWithoutGuest_cart_itemsInput = {
+  create?: Prisma.XOR<Prisma.decant_sizesCreateWithoutGuest_cart_itemsInput, Prisma.decant_sizesUncheckedCreateWithoutGuest_cart_itemsInput>
+  connectOrCreate?: Prisma.decant_sizesCreateOrConnectWithoutGuest_cart_itemsInput
+  connect?: Prisma.decant_sizesWhereUniqueInput
+}
+
+export type decant_sizesUpdateOneRequiredWithoutGuest_cart_itemsNestedInput = {
+  create?: Prisma.XOR<Prisma.decant_sizesCreateWithoutGuest_cart_itemsInput, Prisma.decant_sizesUncheckedCreateWithoutGuest_cart_itemsInput>
+  connectOrCreate?: Prisma.decant_sizesCreateOrConnectWithoutGuest_cart_itemsInput
+  upsert?: Prisma.decant_sizesUpsertWithoutGuest_cart_itemsInput
+  connect?: Prisma.decant_sizesWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.decant_sizesUpdateToOneWithWhereWithoutGuest_cart_itemsInput, Prisma.decant_sizesUpdateWithoutGuest_cart_itemsInput>, Prisma.decant_sizesUncheckedUpdateWithoutGuest_cart_itemsInput>
+}
+
 export type decant_sizesCreateWithoutFragrance_decant_pricesInput = {
   id?: bigint | number
   size_ml: number
   label: string
   cart_items?: Prisma.cart_itemsCreateNestedManyWithoutDecant_sizeInput
   order_items?: Prisma.order_itemsCreateNestedManyWithoutDecant_sizeInput
+  guest_order_items?: Prisma.guest_order_itemsCreateNestedManyWithoutDecant_sizeInput
+  guest_cart_items?: Prisma.guest_cart_itemsCreateNestedManyWithoutDecant_sizeInput
 }
 
 export type decant_sizesUncheckedCreateWithoutFragrance_decant_pricesInput = {
@@ -400,6 +444,8 @@ export type decant_sizesUncheckedCreateWithoutFragrance_decant_pricesInput = {
   label: string
   cart_items?: Prisma.cart_itemsUncheckedCreateNestedManyWithoutDecant_sizeInput
   order_items?: Prisma.order_itemsUncheckedCreateNestedManyWithoutDecant_sizeInput
+  guest_order_items?: Prisma.guest_order_itemsUncheckedCreateNestedManyWithoutDecant_sizeInput
+  guest_cart_items?: Prisma.guest_cart_itemsUncheckedCreateNestedManyWithoutDecant_sizeInput
 }
 
 export type decant_sizesCreateOrConnectWithoutFragrance_decant_pricesInput = {
@@ -424,6 +470,8 @@ export type decant_sizesUpdateWithoutFragrance_decant_pricesInput = {
   label?: Prisma.StringFieldUpdateOperationsInput | string
   cart_items?: Prisma.cart_itemsUpdateManyWithoutDecant_sizeNestedInput
   order_items?: Prisma.order_itemsUpdateManyWithoutDecant_sizeNestedInput
+  guest_order_items?: Prisma.guest_order_itemsUpdateManyWithoutDecant_sizeNestedInput
+  guest_cart_items?: Prisma.guest_cart_itemsUpdateManyWithoutDecant_sizeNestedInput
 }
 
 export type decant_sizesUncheckedUpdateWithoutFragrance_decant_pricesInput = {
@@ -432,6 +480,8 @@ export type decant_sizesUncheckedUpdateWithoutFragrance_decant_pricesInput = {
   label?: Prisma.StringFieldUpdateOperationsInput | string
   cart_items?: Prisma.cart_itemsUncheckedUpdateManyWithoutDecant_sizeNestedInput
   order_items?: Prisma.order_itemsUncheckedUpdateManyWithoutDecant_sizeNestedInput
+  guest_order_items?: Prisma.guest_order_itemsUncheckedUpdateManyWithoutDecant_sizeNestedInput
+  guest_cart_items?: Prisma.guest_cart_itemsUncheckedUpdateManyWithoutDecant_sizeNestedInput
 }
 
 export type decant_sizesCreateWithoutCart_itemsInput = {
@@ -440,6 +490,8 @@ export type decant_sizesCreateWithoutCart_itemsInput = {
   label: string
   fragrance_decant_prices?: Prisma.fragrance_decant_pricesCreateNestedManyWithoutDecant_sizeInput
   order_items?: Prisma.order_itemsCreateNestedManyWithoutDecant_sizeInput
+  guest_order_items?: Prisma.guest_order_itemsCreateNestedManyWithoutDecant_sizeInput
+  guest_cart_items?: Prisma.guest_cart_itemsCreateNestedManyWithoutDecant_sizeInput
 }
 
 export type decant_sizesUncheckedCreateWithoutCart_itemsInput = {
@@ -448,6 +500,8 @@ export type decant_sizesUncheckedCreateWithoutCart_itemsInput = {
   label: string
   fragrance_decant_prices?: Prisma.fragrance_decant_pricesUncheckedCreateNestedManyWithoutDecant_sizeInput
   order_items?: Prisma.order_itemsUncheckedCreateNestedManyWithoutDecant_sizeInput
+  guest_order_items?: Prisma.guest_order_itemsUncheckedCreateNestedManyWithoutDecant_sizeInput
+  guest_cart_items?: Prisma.guest_cart_itemsUncheckedCreateNestedManyWithoutDecant_sizeInput
 }
 
 export type decant_sizesCreateOrConnectWithoutCart_itemsInput = {
@@ -472,6 +526,8 @@ export type decant_sizesUpdateWithoutCart_itemsInput = {
   label?: Prisma.StringFieldUpdateOperationsInput | string
   fragrance_decant_prices?: Prisma.fragrance_decant_pricesUpdateManyWithoutDecant_sizeNestedInput
   order_items?: Prisma.order_itemsUpdateManyWithoutDecant_sizeNestedInput
+  guest_order_items?: Prisma.guest_order_itemsUpdateManyWithoutDecant_sizeNestedInput
+  guest_cart_items?: Prisma.guest_cart_itemsUpdateManyWithoutDecant_sizeNestedInput
 }
 
 export type decant_sizesUncheckedUpdateWithoutCart_itemsInput = {
@@ -480,6 +536,8 @@ export type decant_sizesUncheckedUpdateWithoutCart_itemsInput = {
   label?: Prisma.StringFieldUpdateOperationsInput | string
   fragrance_decant_prices?: Prisma.fragrance_decant_pricesUncheckedUpdateManyWithoutDecant_sizeNestedInput
   order_items?: Prisma.order_itemsUncheckedUpdateManyWithoutDecant_sizeNestedInput
+  guest_order_items?: Prisma.guest_order_itemsUncheckedUpdateManyWithoutDecant_sizeNestedInput
+  guest_cart_items?: Prisma.guest_cart_itemsUncheckedUpdateManyWithoutDecant_sizeNestedInput
 }
 
 export type decant_sizesCreateWithoutOrder_itemsInput = {
@@ -488,6 +546,8 @@ export type decant_sizesCreateWithoutOrder_itemsInput = {
   label: string
   fragrance_decant_prices?: Prisma.fragrance_decant_pricesCreateNestedManyWithoutDecant_sizeInput
   cart_items?: Prisma.cart_itemsCreateNestedManyWithoutDecant_sizeInput
+  guest_order_items?: Prisma.guest_order_itemsCreateNestedManyWithoutDecant_sizeInput
+  guest_cart_items?: Prisma.guest_cart_itemsCreateNestedManyWithoutDecant_sizeInput
 }
 
 export type decant_sizesUncheckedCreateWithoutOrder_itemsInput = {
@@ -496,6 +556,8 @@ export type decant_sizesUncheckedCreateWithoutOrder_itemsInput = {
   label: string
   fragrance_decant_prices?: Prisma.fragrance_decant_pricesUncheckedCreateNestedManyWithoutDecant_sizeInput
   cart_items?: Prisma.cart_itemsUncheckedCreateNestedManyWithoutDecant_sizeInput
+  guest_order_items?: Prisma.guest_order_itemsUncheckedCreateNestedManyWithoutDecant_sizeInput
+  guest_cart_items?: Prisma.guest_cart_itemsUncheckedCreateNestedManyWithoutDecant_sizeInput
 }
 
 export type decant_sizesCreateOrConnectWithoutOrder_itemsInput = {
@@ -520,6 +582,8 @@ export type decant_sizesUpdateWithoutOrder_itemsInput = {
   label?: Prisma.StringFieldUpdateOperationsInput | string
   fragrance_decant_prices?: Prisma.fragrance_decant_pricesUpdateManyWithoutDecant_sizeNestedInput
   cart_items?: Prisma.cart_itemsUpdateManyWithoutDecant_sizeNestedInput
+  guest_order_items?: Prisma.guest_order_itemsUpdateManyWithoutDecant_sizeNestedInput
+  guest_cart_items?: Prisma.guest_cart_itemsUpdateManyWithoutDecant_sizeNestedInput
 }
 
 export type decant_sizesUncheckedUpdateWithoutOrder_itemsInput = {
@@ -528,6 +592,120 @@ export type decant_sizesUncheckedUpdateWithoutOrder_itemsInput = {
   label?: Prisma.StringFieldUpdateOperationsInput | string
   fragrance_decant_prices?: Prisma.fragrance_decant_pricesUncheckedUpdateManyWithoutDecant_sizeNestedInput
   cart_items?: Prisma.cart_itemsUncheckedUpdateManyWithoutDecant_sizeNestedInput
+  guest_order_items?: Prisma.guest_order_itemsUncheckedUpdateManyWithoutDecant_sizeNestedInput
+  guest_cart_items?: Prisma.guest_cart_itemsUncheckedUpdateManyWithoutDecant_sizeNestedInput
+}
+
+export type decant_sizesCreateWithoutGuest_order_itemsInput = {
+  id?: bigint | number
+  size_ml: number
+  label: string
+  fragrance_decant_prices?: Prisma.fragrance_decant_pricesCreateNestedManyWithoutDecant_sizeInput
+  cart_items?: Prisma.cart_itemsCreateNestedManyWithoutDecant_sizeInput
+  order_items?: Prisma.order_itemsCreateNestedManyWithoutDecant_sizeInput
+  guest_cart_items?: Prisma.guest_cart_itemsCreateNestedManyWithoutDecant_sizeInput
+}
+
+export type decant_sizesUncheckedCreateWithoutGuest_order_itemsInput = {
+  id?: bigint | number
+  size_ml: number
+  label: string
+  fragrance_decant_prices?: Prisma.fragrance_decant_pricesUncheckedCreateNestedManyWithoutDecant_sizeInput
+  cart_items?: Prisma.cart_itemsUncheckedCreateNestedManyWithoutDecant_sizeInput
+  order_items?: Prisma.order_itemsUncheckedCreateNestedManyWithoutDecant_sizeInput
+  guest_cart_items?: Prisma.guest_cart_itemsUncheckedCreateNestedManyWithoutDecant_sizeInput
+}
+
+export type decant_sizesCreateOrConnectWithoutGuest_order_itemsInput = {
+  where: Prisma.decant_sizesWhereUniqueInput
+  create: Prisma.XOR<Prisma.decant_sizesCreateWithoutGuest_order_itemsInput, Prisma.decant_sizesUncheckedCreateWithoutGuest_order_itemsInput>
+}
+
+export type decant_sizesUpsertWithoutGuest_order_itemsInput = {
+  update: Prisma.XOR<Prisma.decant_sizesUpdateWithoutGuest_order_itemsInput, Prisma.decant_sizesUncheckedUpdateWithoutGuest_order_itemsInput>
+  create: Prisma.XOR<Prisma.decant_sizesCreateWithoutGuest_order_itemsInput, Prisma.decant_sizesUncheckedCreateWithoutGuest_order_itemsInput>
+  where?: Prisma.decant_sizesWhereInput
+}
+
+export type decant_sizesUpdateToOneWithWhereWithoutGuest_order_itemsInput = {
+  where?: Prisma.decant_sizesWhereInput
+  data: Prisma.XOR<Prisma.decant_sizesUpdateWithoutGuest_order_itemsInput, Prisma.decant_sizesUncheckedUpdateWithoutGuest_order_itemsInput>
+}
+
+export type decant_sizesUpdateWithoutGuest_order_itemsInput = {
+  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  size_ml?: Prisma.IntFieldUpdateOperationsInput | number
+  label?: Prisma.StringFieldUpdateOperationsInput | string
+  fragrance_decant_prices?: Prisma.fragrance_decant_pricesUpdateManyWithoutDecant_sizeNestedInput
+  cart_items?: Prisma.cart_itemsUpdateManyWithoutDecant_sizeNestedInput
+  order_items?: Prisma.order_itemsUpdateManyWithoutDecant_sizeNestedInput
+  guest_cart_items?: Prisma.guest_cart_itemsUpdateManyWithoutDecant_sizeNestedInput
+}
+
+export type decant_sizesUncheckedUpdateWithoutGuest_order_itemsInput = {
+  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  size_ml?: Prisma.IntFieldUpdateOperationsInput | number
+  label?: Prisma.StringFieldUpdateOperationsInput | string
+  fragrance_decant_prices?: Prisma.fragrance_decant_pricesUncheckedUpdateManyWithoutDecant_sizeNestedInput
+  cart_items?: Prisma.cart_itemsUncheckedUpdateManyWithoutDecant_sizeNestedInput
+  order_items?: Prisma.order_itemsUncheckedUpdateManyWithoutDecant_sizeNestedInput
+  guest_cart_items?: Prisma.guest_cart_itemsUncheckedUpdateManyWithoutDecant_sizeNestedInput
+}
+
+export type decant_sizesCreateWithoutGuest_cart_itemsInput = {
+  id?: bigint | number
+  size_ml: number
+  label: string
+  fragrance_decant_prices?: Prisma.fragrance_decant_pricesCreateNestedManyWithoutDecant_sizeInput
+  cart_items?: Prisma.cart_itemsCreateNestedManyWithoutDecant_sizeInput
+  order_items?: Prisma.order_itemsCreateNestedManyWithoutDecant_sizeInput
+  guest_order_items?: Prisma.guest_order_itemsCreateNestedManyWithoutDecant_sizeInput
+}
+
+export type decant_sizesUncheckedCreateWithoutGuest_cart_itemsInput = {
+  id?: bigint | number
+  size_ml: number
+  label: string
+  fragrance_decant_prices?: Prisma.fragrance_decant_pricesUncheckedCreateNestedManyWithoutDecant_sizeInput
+  cart_items?: Prisma.cart_itemsUncheckedCreateNestedManyWithoutDecant_sizeInput
+  order_items?: Prisma.order_itemsUncheckedCreateNestedManyWithoutDecant_sizeInput
+  guest_order_items?: Prisma.guest_order_itemsUncheckedCreateNestedManyWithoutDecant_sizeInput
+}
+
+export type decant_sizesCreateOrConnectWithoutGuest_cart_itemsInput = {
+  where: Prisma.decant_sizesWhereUniqueInput
+  create: Prisma.XOR<Prisma.decant_sizesCreateWithoutGuest_cart_itemsInput, Prisma.decant_sizesUncheckedCreateWithoutGuest_cart_itemsInput>
+}
+
+export type decant_sizesUpsertWithoutGuest_cart_itemsInput = {
+  update: Prisma.XOR<Prisma.decant_sizesUpdateWithoutGuest_cart_itemsInput, Prisma.decant_sizesUncheckedUpdateWithoutGuest_cart_itemsInput>
+  create: Prisma.XOR<Prisma.decant_sizesCreateWithoutGuest_cart_itemsInput, Prisma.decant_sizesUncheckedCreateWithoutGuest_cart_itemsInput>
+  where?: Prisma.decant_sizesWhereInput
+}
+
+export type decant_sizesUpdateToOneWithWhereWithoutGuest_cart_itemsInput = {
+  where?: Prisma.decant_sizesWhereInput
+  data: Prisma.XOR<Prisma.decant_sizesUpdateWithoutGuest_cart_itemsInput, Prisma.decant_sizesUncheckedUpdateWithoutGuest_cart_itemsInput>
+}
+
+export type decant_sizesUpdateWithoutGuest_cart_itemsInput = {
+  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  size_ml?: Prisma.IntFieldUpdateOperationsInput | number
+  label?: Prisma.StringFieldUpdateOperationsInput | string
+  fragrance_decant_prices?: Prisma.fragrance_decant_pricesUpdateManyWithoutDecant_sizeNestedInput
+  cart_items?: Prisma.cart_itemsUpdateManyWithoutDecant_sizeNestedInput
+  order_items?: Prisma.order_itemsUpdateManyWithoutDecant_sizeNestedInput
+  guest_order_items?: Prisma.guest_order_itemsUpdateManyWithoutDecant_sizeNestedInput
+}
+
+export type decant_sizesUncheckedUpdateWithoutGuest_cart_itemsInput = {
+  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  size_ml?: Prisma.IntFieldUpdateOperationsInput | number
+  label?: Prisma.StringFieldUpdateOperationsInput | string
+  fragrance_decant_prices?: Prisma.fragrance_decant_pricesUncheckedUpdateManyWithoutDecant_sizeNestedInput
+  cart_items?: Prisma.cart_itemsUncheckedUpdateManyWithoutDecant_sizeNestedInput
+  order_items?: Prisma.order_itemsUncheckedUpdateManyWithoutDecant_sizeNestedInput
+  guest_order_items?: Prisma.guest_order_itemsUncheckedUpdateManyWithoutDecant_sizeNestedInput
 }
 
 
@@ -539,12 +717,16 @@ export type Decant_sizesCountOutputType = {
   fragrance_decant_prices: number
   cart_items: number
   order_items: number
+  guest_order_items: number
+  guest_cart_items: number
 }
 
 export type Decant_sizesCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   fragrance_decant_prices?: boolean | Decant_sizesCountOutputTypeCountFragrance_decant_pricesArgs
   cart_items?: boolean | Decant_sizesCountOutputTypeCountCart_itemsArgs
   order_items?: boolean | Decant_sizesCountOutputTypeCountOrder_itemsArgs
+  guest_order_items?: boolean | Decant_sizesCountOutputTypeCountGuest_order_itemsArgs
+  guest_cart_items?: boolean | Decant_sizesCountOutputTypeCountGuest_cart_itemsArgs
 }
 
 /**
@@ -578,6 +760,20 @@ export type Decant_sizesCountOutputTypeCountOrder_itemsArgs<ExtArgs extends runt
   where?: Prisma.order_itemsWhereInput
 }
 
+/**
+ * Decant_sizesCountOutputType without action
+ */
+export type Decant_sizesCountOutputTypeCountGuest_order_itemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.guest_order_itemsWhereInput
+}
+
+/**
+ * Decant_sizesCountOutputType without action
+ */
+export type Decant_sizesCountOutputTypeCountGuest_cart_itemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.guest_cart_itemsWhereInput
+}
+
 
 export type decant_sizesSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -586,6 +782,8 @@ export type decant_sizesSelect<ExtArgs extends runtime.Types.Extensions.Internal
   fragrance_decant_prices?: boolean | Prisma.decant_sizes$fragrance_decant_pricesArgs<ExtArgs>
   cart_items?: boolean | Prisma.decant_sizes$cart_itemsArgs<ExtArgs>
   order_items?: boolean | Prisma.decant_sizes$order_itemsArgs<ExtArgs>
+  guest_order_items?: boolean | Prisma.decant_sizes$guest_order_itemsArgs<ExtArgs>
+  guest_cart_items?: boolean | Prisma.decant_sizes$guest_cart_itemsArgs<ExtArgs>
   _count?: boolean | Prisma.Decant_sizesCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["decant_sizes"]>
 
@@ -612,6 +810,8 @@ export type decant_sizesInclude<ExtArgs extends runtime.Types.Extensions.Interna
   fragrance_decant_prices?: boolean | Prisma.decant_sizes$fragrance_decant_pricesArgs<ExtArgs>
   cart_items?: boolean | Prisma.decant_sizes$cart_itemsArgs<ExtArgs>
   order_items?: boolean | Prisma.decant_sizes$order_itemsArgs<ExtArgs>
+  guest_order_items?: boolean | Prisma.decant_sizes$guest_order_itemsArgs<ExtArgs>
+  guest_cart_items?: boolean | Prisma.decant_sizes$guest_cart_itemsArgs<ExtArgs>
   _count?: boolean | Prisma.Decant_sizesCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type decant_sizesIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -623,6 +823,8 @@ export type $decant_sizesPayload<ExtArgs extends runtime.Types.Extensions.Intern
     fragrance_decant_prices: Prisma.$fragrance_decant_pricesPayload<ExtArgs>[]
     cart_items: Prisma.$cart_itemsPayload<ExtArgs>[]
     order_items: Prisma.$order_itemsPayload<ExtArgs>[]
+    guest_order_items: Prisma.$guest_order_itemsPayload<ExtArgs>[]
+    guest_cart_items: Prisma.$guest_cart_itemsPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: bigint
@@ -1025,6 +1227,8 @@ export interface Prisma__decant_sizesClient<T, Null = never, ExtArgs extends run
   fragrance_decant_prices<T extends Prisma.decant_sizes$fragrance_decant_pricesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.decant_sizes$fragrance_decant_pricesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$fragrance_decant_pricesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   cart_items<T extends Prisma.decant_sizes$cart_itemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.decant_sizes$cart_itemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$cart_itemsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   order_items<T extends Prisma.decant_sizes$order_itemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.decant_sizes$order_itemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$order_itemsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  guest_order_items<T extends Prisma.decant_sizes$guest_order_itemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.decant_sizes$guest_order_itemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$guest_order_itemsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  guest_cart_items<T extends Prisma.decant_sizes$guest_cart_itemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.decant_sizes$guest_cart_itemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$guest_cart_itemsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1514,6 +1718,54 @@ export type decant_sizes$order_itemsArgs<ExtArgs extends runtime.Types.Extension
   take?: number
   skip?: number
   distinct?: Prisma.Order_itemsScalarFieldEnum | Prisma.Order_itemsScalarFieldEnum[]
+}
+
+/**
+ * decant_sizes.guest_order_items
+ */
+export type decant_sizes$guest_order_itemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the guest_order_items
+   */
+  select?: Prisma.guest_order_itemsSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the guest_order_items
+   */
+  omit?: Prisma.guest_order_itemsOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.guest_order_itemsInclude<ExtArgs> | null
+  where?: Prisma.guest_order_itemsWhereInput
+  orderBy?: Prisma.guest_order_itemsOrderByWithRelationInput | Prisma.guest_order_itemsOrderByWithRelationInput[]
+  cursor?: Prisma.guest_order_itemsWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.Guest_order_itemsScalarFieldEnum | Prisma.Guest_order_itemsScalarFieldEnum[]
+}
+
+/**
+ * decant_sizes.guest_cart_items
+ */
+export type decant_sizes$guest_cart_itemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the guest_cart_items
+   */
+  select?: Prisma.guest_cart_itemsSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the guest_cart_items
+   */
+  omit?: Prisma.guest_cart_itemsOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.guest_cart_itemsInclude<ExtArgs> | null
+  where?: Prisma.guest_cart_itemsWhereInput
+  orderBy?: Prisma.guest_cart_itemsOrderByWithRelationInput | Prisma.guest_cart_itemsOrderByWithRelationInput[]
+  cursor?: Prisma.guest_cart_itemsWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.Guest_cart_itemsScalarFieldEnum | Prisma.Guest_cart_itemsScalarFieldEnum[]
 }
 
 /**

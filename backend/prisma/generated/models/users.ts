@@ -38,6 +38,13 @@ export type UsersMinAggregateOutputType = {
   email: string | null
   name: string | null
   created_at: Date | null
+  address_line1: string | null
+  address_line2: string | null
+  city: string | null
+  state_province: string | null
+  postal_code: string | null
+  country: string | null
+  phone: string | null
 }
 
 export type UsersMaxAggregateOutputType = {
@@ -45,6 +52,13 @@ export type UsersMaxAggregateOutputType = {
   email: string | null
   name: string | null
   created_at: Date | null
+  address_line1: string | null
+  address_line2: string | null
+  city: string | null
+  state_province: string | null
+  postal_code: string | null
+  country: string | null
+  phone: string | null
 }
 
 export type UsersCountAggregateOutputType = {
@@ -52,6 +66,13 @@ export type UsersCountAggregateOutputType = {
   email: number
   name: number
   created_at: number
+  address_line1: number
+  address_line2: number
+  city: number
+  state_province: number
+  postal_code: number
+  country: number
+  phone: number
   _all: number
 }
 
@@ -69,6 +90,13 @@ export type UsersMinAggregateInputType = {
   email?: true
   name?: true
   created_at?: true
+  address_line1?: true
+  address_line2?: true
+  city?: true
+  state_province?: true
+  postal_code?: true
+  country?: true
+  phone?: true
 }
 
 export type UsersMaxAggregateInputType = {
@@ -76,6 +104,13 @@ export type UsersMaxAggregateInputType = {
   email?: true
   name?: true
   created_at?: true
+  address_line1?: true
+  address_line2?: true
+  city?: true
+  state_province?: true
+  postal_code?: true
+  country?: true
+  phone?: true
 }
 
 export type UsersCountAggregateInputType = {
@@ -83,6 +118,13 @@ export type UsersCountAggregateInputType = {
   email?: true
   name?: true
   created_at?: true
+  address_line1?: true
+  address_line2?: true
+  city?: true
+  state_province?: true
+  postal_code?: true
+  country?: true
+  phone?: true
   _all?: true
 }
 
@@ -177,6 +219,13 @@ export type UsersGroupByOutputType = {
   email: string
   name: string
   created_at: Date
+  address_line1: string | null
+  address_line2: string | null
+  city: string | null
+  state_province: string | null
+  postal_code: string | null
+  country: string | null
+  phone: string | null
   _count: UsersCountAggregateOutputType | null
   _avg: UsersAvgAggregateOutputType | null
   _sum: UsersSumAggregateOutputType | null
@@ -207,6 +256,13 @@ export type usersWhereInput = {
   email?: Prisma.StringFilter<"users"> | string
   name?: Prisma.StringFilter<"users"> | string
   created_at?: Prisma.DateTimeFilter<"users"> | Date | string
+  address_line1?: Prisma.StringNullableFilter<"users"> | string | null
+  address_line2?: Prisma.StringNullableFilter<"users"> | string | null
+  city?: Prisma.StringNullableFilter<"users"> | string | null
+  state_province?: Prisma.StringNullableFilter<"users"> | string | null
+  postal_code?: Prisma.StringNullableFilter<"users"> | string | null
+  country?: Prisma.StringNullableFilter<"users"> | string | null
+  phone?: Prisma.StringNullableFilter<"users"> | string | null
   cart_items?: Prisma.Cart_itemsListRelationFilter
   orders?: Prisma.OrdersListRelationFilter
 }
@@ -216,6 +272,13 @@ export type usersOrderByWithRelationInput = {
   email?: Prisma.SortOrder
   name?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
+  address_line1?: Prisma.SortOrderInput | Prisma.SortOrder
+  address_line2?: Prisma.SortOrderInput | Prisma.SortOrder
+  city?: Prisma.SortOrderInput | Prisma.SortOrder
+  state_province?: Prisma.SortOrderInput | Prisma.SortOrder
+  postal_code?: Prisma.SortOrderInput | Prisma.SortOrder
+  country?: Prisma.SortOrderInput | Prisma.SortOrder
+  phone?: Prisma.SortOrderInput | Prisma.SortOrder
   cart_items?: Prisma.cart_itemsOrderByRelationAggregateInput
   orders?: Prisma.ordersOrderByRelationAggregateInput
 }
@@ -228,6 +291,13 @@ export type usersWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.usersWhereInput | Prisma.usersWhereInput[]
   name?: Prisma.StringFilter<"users"> | string
   created_at?: Prisma.DateTimeFilter<"users"> | Date | string
+  address_line1?: Prisma.StringNullableFilter<"users"> | string | null
+  address_line2?: Prisma.StringNullableFilter<"users"> | string | null
+  city?: Prisma.StringNullableFilter<"users"> | string | null
+  state_province?: Prisma.StringNullableFilter<"users"> | string | null
+  postal_code?: Prisma.StringNullableFilter<"users"> | string | null
+  country?: Prisma.StringNullableFilter<"users"> | string | null
+  phone?: Prisma.StringNullableFilter<"users"> | string | null
   cart_items?: Prisma.Cart_itemsListRelationFilter
   orders?: Prisma.OrdersListRelationFilter
 }, "id" | "email">
@@ -237,6 +307,13 @@ export type usersOrderByWithAggregationInput = {
   email?: Prisma.SortOrder
   name?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
+  address_line1?: Prisma.SortOrderInput | Prisma.SortOrder
+  address_line2?: Prisma.SortOrderInput | Prisma.SortOrder
+  city?: Prisma.SortOrderInput | Prisma.SortOrder
+  state_province?: Prisma.SortOrderInput | Prisma.SortOrder
+  postal_code?: Prisma.SortOrderInput | Prisma.SortOrder
+  country?: Prisma.SortOrderInput | Prisma.SortOrder
+  phone?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.usersCountOrderByAggregateInput
   _avg?: Prisma.usersAvgOrderByAggregateInput
   _max?: Prisma.usersMaxOrderByAggregateInput
@@ -252,6 +329,13 @@ export type usersScalarWhereWithAggregatesInput = {
   email?: Prisma.StringWithAggregatesFilter<"users"> | string
   name?: Prisma.StringWithAggregatesFilter<"users"> | string
   created_at?: Prisma.DateTimeWithAggregatesFilter<"users"> | Date | string
+  address_line1?: Prisma.StringNullableWithAggregatesFilter<"users"> | string | null
+  address_line2?: Prisma.StringNullableWithAggregatesFilter<"users"> | string | null
+  city?: Prisma.StringNullableWithAggregatesFilter<"users"> | string | null
+  state_province?: Prisma.StringNullableWithAggregatesFilter<"users"> | string | null
+  postal_code?: Prisma.StringNullableWithAggregatesFilter<"users"> | string | null
+  country?: Prisma.StringNullableWithAggregatesFilter<"users"> | string | null
+  phone?: Prisma.StringNullableWithAggregatesFilter<"users"> | string | null
 }
 
 export type usersCreateInput = {
@@ -259,6 +343,13 @@ export type usersCreateInput = {
   email: string
   name: string
   created_at?: Date | string
+  address_line1?: string | null
+  address_line2?: string | null
+  city?: string | null
+  state_province?: string | null
+  postal_code?: string | null
+  country?: string | null
+  phone?: string | null
   cart_items?: Prisma.cart_itemsCreateNestedManyWithoutUserInput
   orders?: Prisma.ordersCreateNestedManyWithoutUserInput
 }
@@ -268,6 +359,13 @@ export type usersUncheckedCreateInput = {
   email: string
   name: string
   created_at?: Date | string
+  address_line1?: string | null
+  address_line2?: string | null
+  city?: string | null
+  state_province?: string | null
+  postal_code?: string | null
+  country?: string | null
+  phone?: string | null
   cart_items?: Prisma.cart_itemsUncheckedCreateNestedManyWithoutUserInput
   orders?: Prisma.ordersUncheckedCreateNestedManyWithoutUserInput
 }
@@ -277,6 +375,13 @@ export type usersUpdateInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  address_line1?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address_line2?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cart_items?: Prisma.cart_itemsUpdateManyWithoutUserNestedInput
   orders?: Prisma.ordersUpdateManyWithoutUserNestedInput
 }
@@ -286,6 +391,13 @@ export type usersUncheckedUpdateInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  address_line1?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address_line2?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cart_items?: Prisma.cart_itemsUncheckedUpdateManyWithoutUserNestedInput
   orders?: Prisma.ordersUncheckedUpdateManyWithoutUserNestedInput
 }
@@ -295,6 +407,13 @@ export type usersCreateManyInput = {
   email: string
   name: string
   created_at?: Date | string
+  address_line1?: string | null
+  address_line2?: string | null
+  city?: string | null
+  state_province?: string | null
+  postal_code?: string | null
+  country?: string | null
+  phone?: string | null
 }
 
 export type usersUpdateManyMutationInput = {
@@ -302,6 +421,13 @@ export type usersUpdateManyMutationInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  address_line1?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address_line2?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type usersUncheckedUpdateManyInput = {
@@ -309,6 +435,13 @@ export type usersUncheckedUpdateManyInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  address_line1?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address_line2?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type usersCountOrderByAggregateInput = {
@@ -316,6 +449,13 @@ export type usersCountOrderByAggregateInput = {
   email?: Prisma.SortOrder
   name?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
+  address_line1?: Prisma.SortOrder
+  address_line2?: Prisma.SortOrder
+  city?: Prisma.SortOrder
+  state_province?: Prisma.SortOrder
+  postal_code?: Prisma.SortOrder
+  country?: Prisma.SortOrder
+  phone?: Prisma.SortOrder
 }
 
 export type usersAvgOrderByAggregateInput = {
@@ -327,6 +467,13 @@ export type usersMaxOrderByAggregateInput = {
   email?: Prisma.SortOrder
   name?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
+  address_line1?: Prisma.SortOrder
+  address_line2?: Prisma.SortOrder
+  city?: Prisma.SortOrder
+  state_province?: Prisma.SortOrder
+  postal_code?: Prisma.SortOrder
+  country?: Prisma.SortOrder
+  phone?: Prisma.SortOrder
 }
 
 export type usersMinOrderByAggregateInput = {
@@ -334,6 +481,13 @@ export type usersMinOrderByAggregateInput = {
   email?: Prisma.SortOrder
   name?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
+  address_line1?: Prisma.SortOrder
+  address_line2?: Prisma.SortOrder
+  city?: Prisma.SortOrder
+  state_province?: Prisma.SortOrder
+  postal_code?: Prisma.SortOrder
+  country?: Prisma.SortOrder
+  phone?: Prisma.SortOrder
 }
 
 export type usersSumOrderByAggregateInput = {
@@ -359,6 +513,10 @@ export type StringFieldUpdateOperationsInput = {
 
 export type DateTimeFieldUpdateOperationsInput = {
   set?: Date | string
+}
+
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
 }
 
 export type usersCreateNestedOneWithoutCart_itemsInput = {
@@ -394,6 +552,13 @@ export type usersCreateWithoutCart_itemsInput = {
   email: string
   name: string
   created_at?: Date | string
+  address_line1?: string | null
+  address_line2?: string | null
+  city?: string | null
+  state_province?: string | null
+  postal_code?: string | null
+  country?: string | null
+  phone?: string | null
   orders?: Prisma.ordersCreateNestedManyWithoutUserInput
 }
 
@@ -402,6 +567,13 @@ export type usersUncheckedCreateWithoutCart_itemsInput = {
   email: string
   name: string
   created_at?: Date | string
+  address_line1?: string | null
+  address_line2?: string | null
+  city?: string | null
+  state_province?: string | null
+  postal_code?: string | null
+  country?: string | null
+  phone?: string | null
   orders?: Prisma.ordersUncheckedCreateNestedManyWithoutUserInput
 }
 
@@ -426,6 +598,13 @@ export type usersUpdateWithoutCart_itemsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  address_line1?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address_line2?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   orders?: Prisma.ordersUpdateManyWithoutUserNestedInput
 }
 
@@ -434,6 +613,13 @@ export type usersUncheckedUpdateWithoutCart_itemsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  address_line1?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address_line2?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   orders?: Prisma.ordersUncheckedUpdateManyWithoutUserNestedInput
 }
 
@@ -442,6 +628,13 @@ export type usersCreateWithoutOrdersInput = {
   email: string
   name: string
   created_at?: Date | string
+  address_line1?: string | null
+  address_line2?: string | null
+  city?: string | null
+  state_province?: string | null
+  postal_code?: string | null
+  country?: string | null
+  phone?: string | null
   cart_items?: Prisma.cart_itemsCreateNestedManyWithoutUserInput
 }
 
@@ -450,6 +643,13 @@ export type usersUncheckedCreateWithoutOrdersInput = {
   email: string
   name: string
   created_at?: Date | string
+  address_line1?: string | null
+  address_line2?: string | null
+  city?: string | null
+  state_province?: string | null
+  postal_code?: string | null
+  country?: string | null
+  phone?: string | null
   cart_items?: Prisma.cart_itemsUncheckedCreateNestedManyWithoutUserInput
 }
 
@@ -474,6 +674,13 @@ export type usersUpdateWithoutOrdersInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  address_line1?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address_line2?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cart_items?: Prisma.cart_itemsUpdateManyWithoutUserNestedInput
 }
 
@@ -482,6 +689,13 @@ export type usersUncheckedUpdateWithoutOrdersInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  address_line1?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address_line2?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cart_items?: Prisma.cart_itemsUncheckedUpdateManyWithoutUserNestedInput
 }
 
@@ -530,6 +744,13 @@ export type usersSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   email?: boolean
   name?: boolean
   created_at?: boolean
+  address_line1?: boolean
+  address_line2?: boolean
+  city?: boolean
+  state_province?: boolean
+  postal_code?: boolean
+  country?: boolean
+  phone?: boolean
   cart_items?: boolean | Prisma.users$cart_itemsArgs<ExtArgs>
   orders?: boolean | Prisma.users$ordersArgs<ExtArgs>
   _count?: boolean | Prisma.UsersCountOutputTypeDefaultArgs<ExtArgs>
@@ -540,6 +761,13 @@ export type usersSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   email?: boolean
   name?: boolean
   created_at?: boolean
+  address_line1?: boolean
+  address_line2?: boolean
+  city?: boolean
+  state_province?: boolean
+  postal_code?: boolean
+  country?: boolean
+  phone?: boolean
 }, ExtArgs["result"]["users"]>
 
 export type usersSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -547,6 +775,13 @@ export type usersSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   email?: boolean
   name?: boolean
   created_at?: boolean
+  address_line1?: boolean
+  address_line2?: boolean
+  city?: boolean
+  state_province?: boolean
+  postal_code?: boolean
+  country?: boolean
+  phone?: boolean
 }, ExtArgs["result"]["users"]>
 
 export type usersSelectScalar = {
@@ -554,9 +789,16 @@ export type usersSelectScalar = {
   email?: boolean
   name?: boolean
   created_at?: boolean
+  address_line1?: boolean
+  address_line2?: boolean
+  city?: boolean
+  state_province?: boolean
+  postal_code?: boolean
+  country?: boolean
+  phone?: boolean
 }
 
-export type usersOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "name" | "created_at", ExtArgs["result"]["users"]>
+export type usersOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "name" | "created_at" | "address_line1" | "address_line2" | "city" | "state_province" | "postal_code" | "country" | "phone", ExtArgs["result"]["users"]>
 export type usersInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   cart_items?: boolean | Prisma.users$cart_itemsArgs<ExtArgs>
   orders?: boolean | Prisma.users$ordersArgs<ExtArgs>
@@ -576,6 +818,13 @@ export type $usersPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     email: string
     name: string
     created_at: Date
+    address_line1: string | null
+    address_line2: string | null
+    city: string | null
+    state_province: string | null
+    postal_code: string | null
+    country: string | null
+    phone: string | null
   }, ExtArgs["result"]["users"]>
   composites: {}
 }
@@ -1005,6 +1254,13 @@ export interface usersFieldRefs {
   readonly email: Prisma.FieldRef<"users", 'String'>
   readonly name: Prisma.FieldRef<"users", 'String'>
   readonly created_at: Prisma.FieldRef<"users", 'DateTime'>
+  readonly address_line1: Prisma.FieldRef<"users", 'String'>
+  readonly address_line2: Prisma.FieldRef<"users", 'String'>
+  readonly city: Prisma.FieldRef<"users", 'String'>
+  readonly state_province: Prisma.FieldRef<"users", 'String'>
+  readonly postal_code: Prisma.FieldRef<"users", 'String'>
+  readonly country: Prisma.FieldRef<"users", 'String'>
+  readonly phone: Prisma.FieldRef<"users", 'String'>
 }
     
 
