@@ -93,8 +93,6 @@ export function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
         description: "You need to sign in to place an order",
         variant: "destructive",
       });
-      // Optionally navigate to sign-in
-      // navigate('/signin');
       return;
     }
 
@@ -111,34 +109,6 @@ export function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
     // The previous implementation was a single-step checkout. Now, we'll navigate.
     navigate("/checkout");
   };
-
-  if (!user) {
-    return (
-      <Sheet open={isOpen} onOpenChange={onClose}>
-        <SheetContent side="right" className="flex flex-col">
-          <SheetHeader>
-            <SheetTitle className="text-xl font-light">
-              Shopping Cart
-            </SheetTitle>
-          </SheetHeader>
-          <div className="flex-grow text-center flex flex-col items-center justify-center py-20">
-            <h1 className="text-lg font-light text-black dark:text-white mb-2">
-              Sign in to view your cart
-            </h1>
-            <Button
-              onClick={() => {
-                onClose();
-                navigate("/signin");
-              }}
-              className="mt-4"
-            >
-              Sign In
-            </Button>
-          </div>
-        </SheetContent>
-      </Sheet>
-    );
-  }
 
   const items = cartData?.items || [];
   const totalAmount = cartData?.total_amount || 0;

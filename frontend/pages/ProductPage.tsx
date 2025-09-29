@@ -50,10 +50,10 @@ export function ProductPage() {
   }, [id, toast]);
 
   const getSessionId = () => {
-    let sessionId = sessionStorage.getItem('guest_session_id');
+    let sessionId = sessionStorage.getItem("guest_session_id");
     if (!sessionId) {
       sessionId = Math.random().toString(36).substr(2, 9);
-      sessionStorage.setItem('guest_session_id', sessionId);
+      sessionStorage.setItem("guest_session_id", sessionId);
     }
     return sessionId;
   };
@@ -63,7 +63,7 @@ export function ProductPage() {
 
     try {
       setIsAddingToCart(true);
-      
+
       if (user) {
         // User is logged in, use regular cart
         await addToCart(fragrance.id, selectedSizeId, quantity);
@@ -74,12 +74,7 @@ export function ProductPage() {
       } else {
         // Guest user, use guest cart
         const sessionId = getSessionId();
-        await backend.guest_cart.add({
-          session_id: sessionId,
-          fragrance_id: fragrance.id,
-          decant_size_id: selectedSizeId,
-          quantity: quantity,
-        });
+        await addToCart(fragrance.id, selectedSizeId, quantity, sessionId);
         toast({
           title: "Added to cart",
           description: `${fragrance.name} has been added to your cart`,
@@ -102,9 +97,9 @@ export function ProductPage() {
 
     try {
       setIsBuyingNow(true);
-      
+
       const sessionId = getSessionId();
-      
+
       // Add item to guest cart
       await backend.guest_cart.add({
         session_id: sessionId,
@@ -112,9 +107,9 @@ export function ProductPage() {
         decant_size_id: selectedSizeId,
         quantity: quantity,
       });
-      
+
       // Navigate directly to guest checkout
-      navigate('/guest-checkout');
+      navigate("/guest-checkout");
     } catch (error) {
       console.error("Failed to buy now:", error);
       toast({
@@ -317,7 +312,7 @@ export function ProductPage() {
                 >
                   {isAddingToCart ? "Adding..." : "Add to Cart"}
                 </Button>
-                
+
                 <Button
                   onClick={handleBuyNow}
                   disabled={isBuyingNow || !selectedSizeId}

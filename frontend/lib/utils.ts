@@ -1,8 +1,8 @@
-import { type ClassValue, clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }
 
 // Currency conversion from USD to MMK (Myanmar Kyat)
@@ -10,5 +10,14 @@ export function cn(...inputs: ClassValue[]) {
 export function currencyToMMK(usdAmount: number): string {
   const mmkRate = 2100; // Example rate: 1 USD = 2100 MMK
   const mmkAmount = usdAmount * mmkRate;
-  return mmkAmount.toLocaleString('en-US');
+  return mmkAmount.toLocaleString("en-US");
 }
+
+export const getOrCreateGuestSessionId = (): string => {
+  let sessionId = sessionStorage.getItem("guest_session_id");
+  if (!sessionId) {
+    sessionId = Math.random().toString(36).substr(2, 9);
+    sessionStorage.setItem("guest_session_id", sessionId);
+  }
+  return sessionId;
+};
