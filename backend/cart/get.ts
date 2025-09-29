@@ -1,5 +1,5 @@
 import { api } from "encore.dev/api";
-import db from "../prisma/database";
+import { db } from "../prisma/database";
 
 export interface GetCartRequest {
   user_id: number;
